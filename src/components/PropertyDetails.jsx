@@ -1,10 +1,11 @@
 import React from 'react';
+import IndivPropertyDetails from './IndivPropertyDetails.jsx';
 
 class PropertyDetails extends React.Component {
   render() {
     return (
-      <section className="property-details">
-
+      <section className="container prop-details-container">
+        <IndivPropertyDetails />
       </section>
     );
   }
