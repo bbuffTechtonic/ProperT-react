@@ -5,7 +5,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      fiscalYear: Date.now()
+      fiscalYear: Date.now();
     };
   }
   
