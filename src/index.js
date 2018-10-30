@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Container, Row, Col } from 'reactstrap';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
+import { Container, Row, Col} from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 const store = require('store');
-import App from './App';
-import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
