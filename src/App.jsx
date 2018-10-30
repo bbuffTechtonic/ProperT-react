@@ -4,12 +4,13 @@ import Dashboard from './components/Dashboard';
 import AddProperty from './components/AddProperty';
 import AccountManagement from './components/AccountManagement';
 import PropertyDetails from './components/PropertyDetails';
+import Landing from './components/Landing';
 import './App.css';
 const store = require('store');
 
 class App extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       fiscalYear: Date.now(),
       rentals: []
@@ -22,8 +23,7 @@ class App extends Component {
     // when user leaves/refreshes the page
     window.addEventListener(
       'beforeunload',
-     this.saveStateToStore.bind(this)
-    );
+    this.saveStateToStore.bind(this)
   }
 
   componentWillUnmount() {
@@ -127,33 +127,40 @@ class App extends Component {
     //   this.setState({ list: updatedList });
     // }
 
-    render() {
-      return (
-        <div className="App">
-          <Router>
-            <header>
-              <nav>
-                <ul>
-                  <li>
-                    <Link to="/dashboard">Dashboard</Link>
-                  </li>
-                  <li>
-                    <Link to="/add-property">Add Property</Link>
-                  </li>
-                  <li>
-                    <Link to="/account">My Account</Link>
-                  </li>
-                  <li>
-                    <Link to="/property-details">Property Details</Link>
-                  </li>
-                </ul>
-              </nav>
-              <Route path="/dashboard" component={Dashboard}></Route>
-              <Route path="/add-property" component={AddProperty}></Route>
-              <Route path="/my-account" component={AccountManagement}></Route>
-              <Route path="/property-details" component={PropertyDetails}></Route>
-            </header>
-          </Router>
+  render() {
+    const { isLoggedIn } = this.state;
+    return (
+      <div className="App">
+        <Router>
+          <header>
+            <nav>
+              <ul>
+                <li>
+                  <Link to="/">Dashboard</Link>
+                </li>
+                <li>
+                  <Link to="/add-property">Add Property</Link>
+                </li>
+                <li>
+                  <Link to="/account">My Account</Link>
+                </li>
+                <li>
+                  <Link to="/property-details">Property Details</Link>
+                </li>
+              </ul>
+            </nav>
+            <Route path="/" component={Landing} />
+            <Route path="/add-property" component={AddProperty} />
+            <Route path="/my-account" component={AccountManagement} />
+            <Route path="/property-details" component={PropertyDetails} />
+          </header>
+        </Router>
+        <main>
+          <Landing isLoggedIn={isLoggedIn} />
+        </main>
+      </div>
+    );
+  }
 }
 
 export default App;

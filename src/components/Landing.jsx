@@ -1,12 +1,12 @@
 import React from 'react';
-class Landing extends React.Component {
-  render() {
-    return (
-      <section className="landing">
-      
-      </section>
-    );
+import Dashboard from './Dashboard';
+import Login from './Login';
+
+function Landing({ isLoggedIn }) {
+  if (isLoggedIn) {
+    return <Dashboard />;
   }
+  return <Login />;
 }
 
 export default Landing;
