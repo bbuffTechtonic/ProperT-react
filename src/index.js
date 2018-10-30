@@ -6,11 +6,11 @@ import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 
-const store = require('store');
 
-// ReactDOM.render(<App />, document.getElementById('root'));
+
 ReactDOM.render(
-  React.createElement(App), document.getElementById('root'),
+  <App />,
+  document.getElementById('root'),
 );
 
 // If you want your app to work offline and load faster, you can change
