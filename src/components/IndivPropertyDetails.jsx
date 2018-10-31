@@ -1,6 +1,6 @@
 import React from 'react';
-import PropOnePic from '../../src/images/ppty2.jpg';
-import '../../src/styles/IndivPropDetails.css';
+import PropOnePic from '../images/ppty2.jpg';
+import '../styles/IndivPropDetails.css';
 
 const store = require('store');
 
