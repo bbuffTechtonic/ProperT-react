@@ -1,6 +1,7 @@
 import React from 'react';
 
-class Graph extends React.Component {
+export class Graph extends React.Component {
+
   constructor(props) {
     super(props);
     this.context = '';
@@ -32,47 +33,10 @@ class Graph extends React.Component {
     this.speed = '';
     this.totLabelsOnYAxis = '';
 
-     //this.mockData = this.mockData.bind(this);
-  }
-
-  async mockData() {
-
-    // copy current list of items
-    const arrChartData = [...this.state.arrChartData];
-
-    arrChartData.push("Property One","Jan", 850, 1650);
-    arrChartData.push("Property One","Feb", 943, 1650);
-    arrChartData.push("Property One","Mar", 580, 1650);
-    arrChartData.push("Property One","Apr", 570, 1650);
-    arrChartData.push("Property One","May", 890, 1650);
-    arrChartData.push("Property One","Jun", 750, 1650);
-    arrChartData.push("Property One","Jul", 790, 1700);
-    arrChartData.push("Property One","Aug", 650, 1700);
-    arrChartData.push("Property One","Sep", 990, 1700);
-    arrChartData.push("Property One","Oct", 850, 1700);
-
-    // update state with new list, reset the new item input
-    this.setState({arrChartData});
-
-    await this.barChart('');
-
   }
 
   // barchart constructor
   barChart(year) {
-
-    // canvas = document.getElementById('bchart');
-    // if (canvas && canvas.getContext) {
-    //   context = canvas.getContext('2d');
-    // }
-
-    // if (!year) {
-    //   this.loadChart('2018');
-    // } else {
-    //   this.loadChart(year);
-    // }
-
-    //this.loadChart(year);
 
     var arrChartData = [];
 
@@ -89,15 +53,11 @@ class Graph extends React.Component {
 
     arrChartData.push(jan2018_One, feb2018_One, mar2018_One, apr2018_One, may2018_One, jun2018_One, jul2018_One, aug2018_One, sep2018_One, oct2018_One);
 
-    console.log('arrChartData: ' + arrChartData);
-
     var arrData = arrChartData;
-
-    console.log(arrData);
 
     this.chartSettings(arrData);
     this.drawAxisLabelMarkers(arrData);
-    //this.drawChartWithAnimation(arrData);
+    this.drawChartWithAnimation(arrData);
 
     //drawBlueLine(arrData);
     //drawRedLine(arrData);
@@ -106,11 +66,6 @@ class Graph extends React.Component {
 
   //initialize the chart and bar values
   chartSettings(arrData) {
-
-    console.log('chartsettings');
-
-    //canvas.height = canvas.height;
-    //canvas.width = canvas.width;
 
     this.context.clearRect(0, 0, this.state.canvasWidth, this.state.canvasHeight);
 
@@ -125,7 +80,7 @@ class Graph extends React.Component {
     // bar properties
     this.bMargin = 15;
     this.totalBars = arrData.length;
-    this.bWidth = (this.state.cWidth / this.totalBars) - this.bMargin;
+    this.bWidth = (this.cWidth / this.totalBars) - this.bMargin;
 
     // find maximum value to plot on chart
     this.maxDataValue = 0;
@@ -136,9 +91,7 @@ class Graph extends React.Component {
       var barVal = parseInt(arrData[i].inc) - parseInt(arrData[i].exp); //parseInt(arrVal[1]);
       if (parseInt(barVal) > parseInt(this.maxDataValue))
             this.maxDataValue = barVal;
-    };
-
-    console.log('maxdata: ' + this.maxDataValue);
+    }
 
     this.totLabelsOnYAxis = 10;
     this.context.font = '10pt Garamond';
@@ -221,9 +174,7 @@ class Graph extends React.Component {
     this.context.restore();
 
     // Add X Axis Title
-    this.context.fillText('Cash FLow (YTD)', this.cMarginSpace + (this.cWidth / 2), this.cMarginHeight + 30);
-
-    this.drawChartWithAnimation(arrData);
+    this.context.fillText('Cash FLow (YTD)', this.cMarginSpace + (this.cWidth / 2), this.cMarginHeight + 30)
 
   };
 
@@ -355,7 +306,7 @@ class Graph extends React.Component {
     this.canvasHeight = canvas.height;
     this.canvasWidth = canvas.width;
 
-    this.mockData();
+    this.barChart();
 
   }
 
@@ -368,4 +319,4 @@ class Graph extends React.Component {
   }
 }
 
-export default Graph;
+//export default Graph;
