@@ -5,7 +5,7 @@ class AddProperty extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: false
+      modal: true,
     };
 
     this.toggle = this.toggle.bind(this);
@@ -20,7 +20,6 @@ class AddProperty extends React.Component {
   render() {
     return (
       <div>
-        <Button color="danger" onClick={this.toggle}>Add Rental</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className="">
           <ModalHeader toggle={this.toggle}>Add Property</ModalHeader>
           <ModalBody>

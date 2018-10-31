@@ -5,13 +5,49 @@ import '../styles/IndivPropDetails.css';
 const store = require('store');
 
 class IndivPropertyDetails extends React.Component {
-  constructor() {
-    super();
-    this.state = { };
+  constructor(props) {
+    super(props);
+    var rentals = JSON.parse(store.get('rentals'));
+    //console.log(rentals, "rentals in const");
+    this.state = {rentals:rentals};
     // this.handleClick = this.handleClick.bind(this);
   }
 
+  // componentDidMount() {
+  //   this.hydrateStateWithStore();
+  //   // add event listener to save state to localStorage
+  //   // when user leaves/refreshes the page
+  //   window.addEventListener(
+  //     'beforeunload',
+  //     this.saveStateToStore.bind(this),
+  //   );
+  // }
+
+  // hydrateStateWithStore() {
+  //   // get the key's value from localStorage
+  //   let value = store.get('rentals');
+  //   // parse the localStorage string and setState
+  //   try {
+  //     value = JSON.parse(value);
+  //     this.setState({ 'rentals': value });
+  //   } catch (e) {
+  //     // handle empty string
+  //     this.setState({ 'rentals': value });
+  //   }
+  // // }
+  // }
+
+  // saveStateToStore() {
+  //   // for every item in React state
+  //   for (let key in this.state) {
+  //     // save to localStorage
+  //     store.set(key, JSON.stringify(this.state[key]));
+  //   }
+  // }
+
   render() {
+    var address1 = this.state.rentals[0].address.address1;
+    console.log(address1);
     return (
       <section id="indiv-property-details">
         <div className="row">
@@ -23,7 +59,7 @@ class IndivPropertyDetails extends React.Component {
               <h5 id="indiv-property-details-header" className="card-header text-left">Property Details</h5>
               <div className="card-body text-left">
                 <div id="indiv-prop-address">
-                  {/* <h5 className="">{this.state.rentals[0].address.address1}</h5> */}
+                  <h5 className="">{address1}</h5>
                   <h5 className="">#305</h5>
                   <h5 className="">Denver, CO 80209</h5>
                 </div>
