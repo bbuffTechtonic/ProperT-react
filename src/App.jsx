@@ -5,6 +5,7 @@ import AccountManagement from './components/AccountManagement';
 import PropertyDetails from './components/PropertyDetails';
 import Landing from './components/Landing';
 import './App.css';
+
 const store = require('store');
 
 class App extends Component {
@@ -68,6 +69,7 @@ class App extends Component {
     // var newProp = {address, tenantInfo, expenses};
     // store.set('rentals', JSON.stringify(newProp));
     //for all items in state
+
     for (let key in this.state) {
       // if the key exists in localStorage
       // if (store.key) {
