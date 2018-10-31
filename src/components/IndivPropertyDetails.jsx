@@ -1,5 +1,5 @@
 import React from 'react';
-import pic from './../../src/images/ppty2.jpg';
+import PropOnePic from './../../src/images/ppty2.jpg';
 
 class IndivPropertyDetails extends React.Component {
   constructor() {
@@ -13,7 +13,7 @@ class IndivPropertyDetails extends React.Component {
       <section id="indiv-property-details">
         <div className="row">
           <div className="col-md-3">
-            <img id="prop-image" className="img-fluid rounded mx-auto d-block" src={pic} alt="current property" />
+            <img id="prop-image" className="img-fluid rounded mx-auto d-block" src={PropOnePic} alt="current property" />
           </div>
           <div className="col">
             <div className="card">
@@ -41,6 +41,6 @@ class IndivPropertyDetails extends React.Component {
       </section>
     );
   }
-};
+}
 
 export default IndivPropertyDetails;
