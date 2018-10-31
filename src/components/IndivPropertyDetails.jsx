@@ -2,6 +2,8 @@ import React from 'react';
 import PropOnePic from '../../src/images/ppty2.jpg';
 import '../../src/styles/IndivPropDetails.css';
 
+const store = require('store');
+
 class IndivPropertyDetails extends React.Component {
   constructor() {
     super();
@@ -21,7 +23,7 @@ class IndivPropertyDetails extends React.Component {
               <h5 id="indiv-property-details-header" className="card-header text-left">Property Details</h5>
               <div className="card-body text-left">
                 <div id="indiv-prop-address">
-                  <h5 className="">123 Elm St.</h5>
+                  <h5 className="">{this.state.rentals[0].address.address1}</h5>
                   <h5 className="">#305</h5>
                   <h5 className="">Denver, CO 80209</h5>
                 </div>
