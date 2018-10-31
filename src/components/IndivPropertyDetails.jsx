@@ -1,5 +1,6 @@
 import React from 'react';
-import PropOnePic from './../../src/images/ppty2.jpg';
+import PropOnePic from '../../src/images/ppty2.jpg';
+import '../../src/styles/IndivPropDetails.css';
 
 class IndivPropertyDetails extends React.Component {
   constructor() {
@@ -18,7 +19,7 @@ class IndivPropertyDetails extends React.Component {
           <div className="col">
             <div className="card">
               <h5 id="indiv-property-details-header" className="card-header">Property Details</h5>
-              <div className="card-body">
+              <div className="card-body text-left">
                 <div id="indiv-prop-address">
                   <h5 className="">123 Elm St.</h5>
                   <h5 className="">#305</h5>

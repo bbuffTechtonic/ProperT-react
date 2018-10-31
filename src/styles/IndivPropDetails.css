@@ -1,0 +1,26 @@
+body {
+
+}
+
+/* adding this margin so footer doesn't overlap container MC*/
+.prop-details-container {
+  margin-bottom: 150px;
+}
+
+#indiv-property-details {
+  margin: 40px 0px 60px 0px;
+}
+
+#indiv-property-details-header {
+  background-color: #343a40;
+  color: white;
+}
+
+#prop-image {
+  margin-bottom: 30px;
+  width: 255px;
+}
+
+.indiv-prop-spec {
+  margin-bottom: 3px;
+}

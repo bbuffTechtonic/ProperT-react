@@ -4,6 +4,7 @@ import AddProperty from './components/AddProperty';
 import AccountManagement from './components/AccountManagement';
 import PropertyDetails from './components/PropertyDetails';
 import Landing from './components/Landing';
+import Nav from './components/Nav';
 import './App.css';
 
 const store = require('store');
@@ -134,6 +135,7 @@ class App extends Component {
     const { isLoggedIn } = this.state;
     return (
       <div className="App">
+        <Nav />
         <Router>
           <header>
             <nav>
@@ -161,6 +163,7 @@ class App extends Component {
         <main>
           <Landing isLoggedIn={isLoggedIn} />
         </main>
+
       </div>
     );
   }
