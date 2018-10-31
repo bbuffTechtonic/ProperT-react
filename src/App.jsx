@@ -45,11 +45,7 @@ class App extends Component {
     //   state: 'CO',
     //   zip: 80209
     // };
-<<<<<<< HEAD
-    // //
-=======
     
->>>>>>> Incorporate router in styled nav
     // var tenantInfo = {
     //   firstName: "Maggie",
     //   lastName: "Brown",
@@ -58,7 +54,6 @@ class App extends Component {
     //   leaseStart: "6/1/2018",
     //   leaseEnd: "5/31/2019"
     // };
-<<<<<<< HEAD
     // //
     // // //Expense Object
     // var expenses = {
@@ -124,18 +119,6 @@ class App extends Component {
     //       amount: 1750
     //     }
     //   ]
-=======
-    
-    // var expenses =
-    // {
-    //   mileage: [],
-    //   mortgage: {},
-    //   maintenance: [],
-    //   suppliesGoods: [],
-    //   misc:[],
-    //   hoa:[],
-    //   rent:[]
->>>>>>> Incorporate router in styled nav
     // };
     // var newProp = {address, tenantInfo, expenses};
     // store.set('rentals', JSON.stringify(newProp));
