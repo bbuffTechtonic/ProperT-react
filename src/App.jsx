@@ -6,7 +6,6 @@ import AccountManagement from './components/AccountManagement';
 import PropertyDetails from './components/PropertyDetails';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
-import Dashboard from './components/Dashboard';
 import './App.css';
 
 const store = require('store');
@@ -197,7 +196,7 @@ class App extends Component {
         <div className="App">
           <Nav />
           <main>
-            <Route exact path="/" component={isLoggedIn ? Landing : Dashboard} />
+            <Route exact path="/" render={props => <Landing {...props} isLoggedIn={isLoggedIn} />} />
             <Route path="/add-property" component={AddProperty} />
             <Route path="/my-account" component={AccountManagement} />
             <Route path="/property-details" component={PropertyDetails} />
