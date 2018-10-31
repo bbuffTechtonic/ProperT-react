@@ -24,3 +24,7 @@ body {
 .indiv-prop-spec {
   margin-bottom: 3px;
 }
+
+#edit-prop-button {
+  margin-right: 10px;
+}

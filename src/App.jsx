@@ -136,7 +136,7 @@ class App extends Component {
       // if (store.key) {
         // get the key's value from localStorage
         let value = store.get(key) || "";
-        console.log(value, 'value from localstorage');
+        // console.log(value, 'value from localstorage');
         // parse the localStorage string and setState
         try {
           value = JSON.parse(value);

@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import LogoPic from '../images/logo-white-on-tp.png';
 import '../styles/Nav.css';
-const store = require('store');
+
+// const store = require('store');
 
 const NavBar = function NavBar(props) {
   return (
