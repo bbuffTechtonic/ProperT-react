@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import AddProperty from './components/AddProperty';
-import AccountManagement from './components/AccountManagement';
-import PropertyDetails from './components/PropertyDetails';
-import Landing from './components/Landing';
+import Landing from './components/Landing'
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import './App.css';
@@ -48,7 +45,11 @@ class App extends Component {
     //   state: 'CO',
     //   zip: 80209
     // };
+<<<<<<< HEAD
     // //
+=======
+    
+>>>>>>> Incorporate router in styled nav
     // var tenantInfo = {
     //   firstName: "Maggie",
     //   lastName: "Brown",
@@ -57,6 +58,7 @@ class App extends Component {
     //   leaseStart: "6/1/2018",
     //   leaseEnd: "5/31/2019"
     // };
+<<<<<<< HEAD
     // //
     // // //Expense Object
     // var expenses = {
@@ -122,10 +124,22 @@ class App extends Component {
     //       amount: 1750
     //     }
     //   ]
+=======
+    
+    // var expenses =
+    // {
+    //   mileage: [],
+    //   mortgage: {},
+    //   maintenance: [],
+    //   suppliesGoods: [],
+    //   misc:[],
+    //   hoa:[],
+    //   rent:[]
+>>>>>>> Incorporate router in styled nav
     // };
     // var newProp = {address, tenantInfo, expenses};
     // store.set('rentals', JSON.stringify(newProp));
-    //for all items in state
+    // // for all items in state
 
     for (let key in this.state) {
       // if the key exists in localStorage
@@ -165,9 +179,9 @@ class App extends Component {
   //     value: this.state.newItem.slice()
   //   };
 
-  // copy current list of items
+  // // copy current list of items
   // const list = [...this.state.list];
-  //
+  
   // // add the new item to the list
   // list.push(newItem);
 
@@ -183,7 +197,7 @@ class App extends Component {
   //   const list = [...this.state.list];
   //   // filter out the item being deleted
   //   const updatedList = list.filter(item => item.id !== id);
-  //
+  
   //   this.setState({ list: updatedList });
   // }
 
@@ -191,30 +205,8 @@ class App extends Component {
     const { isLoggedIn } = this.state;
     return (
       <div className="App">
-        <Nav />
         <Router>
-          <header>
-            <nav>
-              <ul>
-                <li>
-                  <Link to="/">Dashboard</Link>
-                </li>
-                <li>
-                  <Link to="/add-property">Add Property</Link>
-                </li>
-                <li>
-                  <Link to="/account">My Account</Link>
-                </li>
-                <li>
-                  <Link to="/property-details">Property Details</Link>
-                </li>
-              </ul>
-            </nav>
-            <Route path="/" component={Landing} />
-            <Route path="/add-property" component={AddProperty} />
-            <Route path="/my-account" component={AccountManagement} />
-            <Route path="/property-details" component={PropertyDetails} />
-          </header>
+          <Nav />
         </Router>
         <main>
           <Landing isLoggedIn={isLoggedIn} />
