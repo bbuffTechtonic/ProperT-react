@@ -48,7 +48,7 @@ class App extends Component {
     //   state: 'CO',
     //   zip: 80209
     // };
-    //
+    // //
     // var tenantInfo = {
     //   firstName: "Maggie",
     //   lastName: "Brown",
@@ -57,16 +57,71 @@ class App extends Component {
     //   leaseStart: "6/1/2018",
     //   leaseEnd: "5/31/2019"
     // };
-    //
-    // var expenses =
-    // {
-    //   mileage: [],
-    //   mortgage: {},
-    //   maintenance: [],
-    //   suppliesGoods: [],
-    //   misc:[],
-    //   hoa:[],
-    //   rent:[]
+    // //
+    // // //Expense Object
+    // var expenses = {
+    //   mileage: [
+    //     {
+    //       date: "7/5/2018",
+    //       amount: 25,
+    //       description: "Miles driven"
+    //     },
+    //     {
+    //       date: "8/18/2018",
+    //       amount: 25,
+    //       description: "Miles driven"
+    //     }
+    //   ],
+    //   mortgage: {
+    //     premium: 1700,
+    //     escrow: 800,
+    //     interest: 85,
+    //     mortgageIns: 100
+    //   },
+    //   maintenance: [
+    //     {
+    //       date: "7/18/2018",
+    //       description:"cleaning",
+    //       amount:160,
+    //       image:"../images/receipt.jpg"
+    //     }
+    //   ],
+    //   suppliesGoods: [
+    //     {
+    //       date: "9/01/2018",
+    //       description:"bathroom cleaning supplies",
+    //       amount:25,
+    //       image:"../images/receipt.jpg"
+    //     }
+    //   ],
+    //   misc: [
+    //     {
+    //       date: "7/18/2018",
+    //       description:"painting living room wall",
+    //       amount:800,
+    //       image:"../images/receipt.jpg"
+    //     }
+    //   ],
+    //   hoa: [
+    //     {
+    //       date: "6/1/2018",
+    //       amount: 50
+    //     }
+    //   ],
+    //   rent: [
+    //     {
+    //       date: "6/5/2018",
+    //       amount: 1750
+    //     },
+    //     {
+    //       date: "7/2/2018",
+    //       amount: 1750
+    //     },
+    //     {
+    //       date: "8/5/2018",
+    //       amount: 1750
+    //     }
+    //   ]
     // };
     // var newProp = {address, tenantInfo, expenses};
     // store.set('rentals', JSON.stringify(newProp));
