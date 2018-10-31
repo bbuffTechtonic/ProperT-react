@@ -13,12 +13,25 @@ class Graph extends React.Component {
     this.numctr = '';
     this.speed = '';
     this.totLabelsOnYAxis = '';
-    this.state = { arrChartData: [], canvasHeight: '', canvasWidth: '',
-      cWidth: '', cHeight: '', cMargin: '', cSpace: '',
-      cMarginSpace: '', cMarginHeight:  '',
-      bWidth: '', bMargin: '', totalBars: '', maxDataValue: '',
-      bWidthMargin: '', ctr: '', numctr: '', speed: '', totLabelsOnYAxis: ''
-     }
+    this.state = { arrChartData: [] };
+    this.canvasHeight = '';
+    this.canvasWidth = '';
+    this.cWidth = '';
+    this.cHeight = '';
+    this.cMargin = '';
+    this.cSpace = '';
+    this.cMarginSpace = '';
+    this.cMarginHeight =  '';
+    this.bWidth = '';
+    this.bMargin = '';
+    this.totalBars = '';
+    this.maxDataValue = '';
+    this.bWidthMargin = '';
+    this.ctr = '';
+    this.numctr = '';
+    this.speed = '';
+    this.totLabelsOnYAxis = '';
+
      //this.mockData = this.mockData.bind(this);
   }
 
@@ -63,16 +76,18 @@ class Graph extends React.Component {
 
     var arrChartData = [];
 
-    arrChartData.push("Property One","Jan", 850, 1650);
-    arrChartData.push("Property One","Feb", 943, 1650);
-    arrChartData.push("Property One","Mar", 580, 1650);
-    arrChartData.push("Property One","Apr", 570, 1650);
-    arrChartData.push("Property One","May", 890, 1650);
-    arrChartData.push("Property One","Jun", 750, 1650);
-    arrChartData.push("Property One","Jul", 790, 1700);
-    arrChartData.push("Property One","Aug", 650, 1700);
-    arrChartData.push("Property One","Sep", 990, 1700);
-    arrChartData.push("Property One","Oct", 850, 1700);
+    var jan2018_One = {name: "Property One", month: "Jan", exp: 850, inc: 1650};
+    var feb2018_One = {name: "Property One", month: "Feb", exp: 943, inc: 1650};
+    var mar2018_One = {name: "Property One", month: "Mar", exp: 580, inc: 1650};
+    var apr2018_One = {name: "Property One", month: "Apr", exp: 570, inc: 1650};
+    var may2018_One = {name: "Property One", month: "May", exp: 890, inc: 1650};
+    var jun2018_One = {name: "Property One", month: "Jun", exp: 750, inc: 1650};
+    var jul2018_One = {name: "Property One", month: "Jul", exp: 790, inc: 1700};
+    var aug2018_One = {name: "Property One", month: "Aug", exp: 650, inc: 1700};
+    var sep2018_One = {name: "Property One", month: "Sep", exp: 990, inc: 1700};
+    var oct2018_One = {name: "Property One", month: "Oct", exp: 850, inc: 1700};
+
+    arrChartData.push(jan2018_One, feb2018_One, mar2018_One, apr2018_One, may2018_One, jun2018_One, jul2018_One, aug2018_One, sep2018_One, oct2018_One);
 
     console.log('arrChartData: ' + arrChartData);
 
@@ -82,7 +97,7 @@ class Graph extends React.Component {
 
     this.chartSettings(arrData);
     this.drawAxisLabelMarkers(arrData);
-    // this.drawChartWithAnimation(arrData);
+    //this.drawChartWithAnimation(arrData);
 
     //drawBlueLine(arrData);
     //drawRedLine(arrData);
@@ -100,12 +115,12 @@ class Graph extends React.Component {
     this.context.clearRect(0, 0, this.state.canvasWidth, this.state.canvasHeight);
 
     // chart properties
-    this.setState({ cMargin: 25 });
-    this.setState({ cSpace: 60 });
-    this.setState({ cHeight: this.state.canvasHeight - 2 * this.state.cMargin - this.state.cSpace });
-    this.setState({ cWidth: this.state.canvasWidth - 2 * this.state.cMargin - this.state.cSpace });
-    this.setState({ cMarginSpace: this.state.cMargin + this.state.cSpace });
-    this.setState({ cMarginHeight: this.state.cMargin + this.state.cHeight });
+    this.cMargin = 25;
+    this.cSpace = 60;
+    this.cHeight = this.canvasHeight - 2 * this.cMargin - this.cSpace;
+    this.cWidth = this.canvasWidth - 2 * this.cMargin - this.cSpace;
+    this.cMarginSpace = this.cMargin + this.cSpace;
+    this.cMarginHeight = this.cMargin + this.cHeight;
 
     // bar properties
     this.bMargin = 15;
@@ -115,12 +130,15 @@ class Graph extends React.Component {
     // find maximum value to plot on chart
     this.maxDataValue = 0;
     for (var i = 0; i < this.totalBars; i++) {
-      var arrVal = arrData[i].split(',');
-      var barVal = parseInt(arrVal[2]) - parseInt(arrVal[1]); //parseInt(arrVal[1]);
+      //var arrVal = arrData[i].split(',');
+      //console.log(arrVal);
+      //var barVal = parseInt(arrVal[2]) - parseInt(arrVal[1]); //parseInt(arrVal[1]);
+      var barVal = parseInt(arrData[i].inc) - parseInt(arrData[i].exp); //parseInt(arrVal[1]);
       if (parseInt(barVal) > parseInt(this.maxDataValue))
             this.maxDataValue = barVal;
     };
 
+    console.log('maxdata: ' + this.maxDataValue);
 
     this.totLabelsOnYAxis = 10;
     this.context.font = '10pt Garamond';
@@ -135,18 +153,20 @@ class Graph extends React.Component {
   // draw chart axis, labels and markers
   drawAxisLabelMarkers(arrData) {
 
-    console.log('drawaxislabelmarkers:' + arrData);
-
     this.context.lineWidth = '2.0';
 
     // draw y axis
-    this.drawAxis(this.state.cMarginSpace, this.state.cMarginHeight, this.state.cMarginSpace, this.state.cMargin);
+    this.drawAxis(this.cMarginSpace, this.cMarginHeight, this.cMarginSpace, this.cMargin);
 
     // draw x axis
-    this.drawAxis(this.state.cMarginSpace, this.state.cMarginHeight, this.state.cMarginSpace + this.state.cWidth, this.state.cMarginHeight);
+    this.drawAxis(this.cMarginSpace, this.cMarginHeight, this.cMarginSpace + this.cWidth, this.cMarginHeight);
 
     this.context.lineWidth = '1.0';
-    //drawMarkers(arrData);
+
+    this.drawMarkers(arrData);
+
+
+
   };
 
   // draw X and Y axis
@@ -161,70 +181,75 @@ class Graph extends React.Component {
     this.context.stroke();
   };
 
-  // // draw chart markers on X and Y Axis
-  // drawMarkers(arrData) {
-  //
-  //   var numMarkers = parseInt(maxDataValue / totLabelsOnYAxis);
-  //   context.textAlign = 'right';
-  //   context.fillStyle = '#000';
-  //
-  //   // Y Axis
-  //   for (var i = 0; i <= totLabelsOnYAxis; i++) {
-  //     markerVal = i * numMarkers;
-  //     markerValHt = i * numMarkers * cHeight;
-  //     var xMarkers = cMarginSpace - 5;
-  //     var yMarkers = cMarginHeight - (markerValHt / maxDataValue);
-  //     context.fillText(markerVal, xMarkers, yMarkers, cSpace);
-  //   }
-  //
-  //   // X Axis
-  //   context.textAlign = 'center';
-  //   for (var i = 0; i < totalBars; i++) {
-  //       arrval = arrData[i].split(",");
-  //       name = arrval[0];
-  //
-  //       markerXPos = cMarginSpace + bMargin + (i * (bWidth + bMargin)) + (bWidth / 2);
-  //       markerYPos = cMarginHeight + 10;
-  //
-  //       context.fillText(name, markerXPos, markerYPos, bWidth);
-  //
-  //   }
-  //
-  //   context.save();
-  //
-  //   // Add Y Axis title
-  //   context.translate(cMargin + 10, cHeight / 2);
-  //   context.rotate(Math.PI * -90 / 180);
-  //   context.fillText('Amount in USD', 0, 0);
-  //
-  //   context.restore();
-  //
-  //   // Add X Axis Title
-  //   context.fillText('Cash FLow (YTD)', cMarginSpace + (cWidth / 2), cMarginHeight + 30);
-  //
-  // };
-  //
-  // drawChartWithAnimation(arrData) {
-  //   // Loop through the total bars and draw
-  //   for (var i = 0; i < totalBars; i++) {
-  //     var arrVal = arrData[i].split(",");
-  //     bVal = parseInt(arrVal[2]) - parseInt(arrVal[1]);
-  //
-  //     // If Profit draw Green Bar else draws Orange Bar
-  //     if (bVal >= 0) {
-  //       bHt = (bVal * cHeight / maxDataValue);
-  //       bX = cMarginSpace + (i * (bWidth + bMargin)) + bMargin;
-  //       bY = cMarginHeight - bHt - 2;
-  //       drawGreenRectangle(bX, bY, bWidth, bHt, true);
-  //     } else {
-  //       bVal = bVal * -1;
-  //       bHt = (bVal * cHeight / maxDataValue);
-  //       bX = cMarginSpace + (i * (bWidth + bMargin)) + bMargin;
-  //       bY = cMarginHeight - bHt - 2;
-  //       drawOrangeRectangle(bX, bY, bWidth, bHt, true);
-  //     }
-  //   }
-  // };
+  // draw chart markers on X and Y Axis
+  drawMarkers(arrData) {
+
+    var numMarkers = parseInt(this.maxDataValue / this.totLabelsOnYAxis);
+    this.context.textAlign = 'right';
+    this.context.fillStyle = '#000';
+
+    // Y Axis
+    for (var i = 0; i <= this.totLabelsOnYAxis; i++) {
+      var markerVal = i * numMarkers;
+      var markerValHt = i * numMarkers * this.cHeight;
+      var xMarkers = this.cMarginSpace - 5;
+      var yMarkers = this.cMarginHeight - (markerValHt / this.maxDataValue);
+      this.context.fillText(markerVal, xMarkers, yMarkers, this.cSpace);
+    }
+
+    // X Axis
+    this.context.textAlign = 'center';
+
+    for (i = 0; i < this.totalBars; i++) {
+        //arrval = arrData[i].split(",");
+        var name = arrData[i].month;
+
+        var markerXPos = this.cMarginSpace + this.bMargin + (i * (this.bWidth + this.bMargin)) + (this.bWidth / 2);
+        var markerYPos = this.cMarginHeight + 10;
+
+        this.context.fillText(name, markerXPos, markerYPos, this.bWidth);
+
+    }
+
+    this.context.save();
+
+    // Add Y Axis title
+    this.context.translate(this.cMargin + 10, this.cHeight / 2);
+    this.context.rotate(Math.PI * -90 / 180);
+    this.context.fillText('Amount in USD', 0, 0);
+
+    this.context.restore();
+
+    // Add X Axis Title
+    this.context.fillText('Cash FLow (YTD)', this.cMarginSpace + (this.cWidth / 2), this.cMarginHeight + 30);
+
+    this.drawChartWithAnimation(arrData);
+
+  };
+
+  drawChartWithAnimation(arrData) {
+
+    console.log('drawChartWithAnimation ' + arrData.length);
+    // Loop through the total bars and draw
+    for (var i = 0; i < this.totalBars; i++) {
+      //var arrVal = arrData[i].split(",");
+      var bVal = parseInt(arrData[i].inc) - parseInt(arrData[i].exp);
+
+      // If Profit draw Green Bar else draws Orange Bar
+      if (bVal >= 0) {
+        var bHt = (bVal * this.cHeight / this.maxDataValue);
+        var bX = this.cMarginSpace + (i * (this.bWidth + this.bMargin)) + this.bMargin;
+        var bY = this.cMarginHeight - bHt - 2;
+        this.drawGreenRectangle(bX, bY, this.bWidth, bHt, true);
+      } else {
+        bVal = bVal * -1;
+        bHt = (bVal * this.cHeight / this.maxDataValue);
+        bX = this.cMarginSpace + (i * (this.bWidth + this.bMargin)) + this.bMargin;
+        bY = this.cMarginHeight - bHt - 2;
+        this.drawOrangeRectangle(bX, bY, this.bWidth, bHt, true);
+      }
+    }
+  };
   //
   // drawBlueLine(arrData) {
   //   var prevX, prevY = 0;
@@ -281,50 +306,54 @@ class Graph extends React.Component {
   //   context.stroke();
   //   context.closePath();
   // };
-  //
-  // drawGreenRectangle(x, y, w, h, fill) {
-  //   // Draws Green Bars
-  //   context.beginPath();
-  //   context.rect(x, y, w, h);
-  //   context.closePath();
-  //
-  //   if (fill) {
-  //       var gradient = context.createLinearGradient(0, 0, 0, h);
-  //       gradient.addColorStop(0, 'green');
-  //       gradient.addColorStop(1, 'green');
-  //       context.fillStyle = gradient;
-  //       context.strokeStyle = gradient;
-  //       context.fill();
-  //   }
-  //
-  //   context.stroke();
-  // }
-  //
-  // drawOrangeRectangle(x, y, w, h, fill) {
-  //   //Draws Orange Bars
-  //   context.beginPath();
-  //   context.rect(x, y, w, h);
-  //   context.closePath();
-  //   //context.stroke();
-  //
-  //   if (fill) {
-  //       var gradient = context.createLinearGradient(0, 0, 0, h);
-  //       gradient.addColorStop(0, 'yellow');
-  //       gradient.addColorStop(1, 'red');
-  //       context.fillStyle = gradient;
-  //       context.strokeStyle = gradient;
-  //       context.fillRect(x, y, w, h);
-  //       //context.fill();
-  //   }
-  //   context.stroke();
-  // }
+
+  drawGreenRectangle(x, y, w, h, fill) {
+
+    console.log('drawgreen' + x);
+    // Draws Green Bars
+    this.context.beginPath();
+    this.context.rect(x, y, w, h);
+    this.context.closePath();
+
+    if (fill) {
+        var gradient = this.context.createLinearGradient(0, 0, 0, h);
+        gradient.addColorStop(0, 'green');
+        gradient.addColorStop(1, 'green');
+        this.context.fillStyle = gradient;
+        this.context.strokeStyle = gradient;
+        this.context.fill();
+    }
+
+    this.context.stroke();
+  }
+
+  drawOrangeRectangle(x, y, w, h, fill) {
+
+    console.log('draworange' + x);
+    //Draws Orange Bars
+    this.context.beginPath();
+    this.context.rect(x, y, w, h);
+    this.context.closePath();
+    //context.stroke();
+
+    if (fill) {
+        var gradient = this.context.createLinearGradient(0, 0, 0, h);
+        gradient.addColorStop(0, 'yellow');
+        gradient.addColorStop(1, 'red');
+        this.context.fillStyle = gradient;
+        this.context.strokeStyle = gradient;
+        this.context.fillRect(x, y, w, h);
+        //context.fill();
+    }
+    this.context.stroke();
+  }
 
   componentDidMount() {
 
     const canvas = this.refs.canvas;
     this.context = canvas.getContext("2d");
-    this.setState({ canvasHeight: canvas.height });
-    this.setState({ canvasWidth: canvas.width });
+    this.canvasHeight = canvas.height;
+    this.canvasWidth = canvas.width;
 
     this.mockData();
 
