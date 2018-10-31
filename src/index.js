@@ -4,6 +4,7 @@ import { Container, Row, Col } from 'reactstrap';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
+import Graph from './components/graph.js';
 import './index.css';
 
 
