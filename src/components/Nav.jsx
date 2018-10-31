@@ -1,9 +1,5 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom';
-import AddProperty from './AddProperty';
-import AccountManagement from './AccountManagement';
-import PropertyDetails from './PropertyDetails';
-import Landing from './Landing';
+import { Link } from 'react-router-dom';
 import LogoPic from '../images/logo-white-on-tp.png';
 import '../styles/Nav.css';
 
@@ -47,10 +43,6 @@ class NavBar extends React.Component {
             <a href="landing.html" id="logout-button" className="btn btn-outline-success btn-sm">Logout</a>
           </div>
         </nav>
-        <Route exact path="/" component={Landing} />
-        <Route path="/add-property" component={AddProperty} />
-        <Route path="/my-account" component={AccountManagement} />
-        <Route path="/property-details" component={PropertyDetails} />
       </div>
     );
   }

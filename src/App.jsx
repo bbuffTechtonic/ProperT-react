@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import Landing from './components/Landing'
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Landing from './components/Landing';
+import AddProperty from './components/AddProperty';
+import AccountManagement from './components/AccountManagement';
+import PropertyDetails from './components/PropertyDetails';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
+import Dashboard from './components/Dashboard';
 import './App.css';
 
 const store = require('store');
@@ -10,7 +14,8 @@ const store = require('store');
 class App extends Component {
   constructor() {
     super();
-    const currentYear = Date.now().getFullYear();
+    const date = new Date(Date.now());
+    const currentYear = date.getFullYear();
     this.state = {
       fiscalYear: currentYear,
       rentals: [],
@@ -188,15 +193,18 @@ class App extends Component {
   render() {
     const { isLoggedIn } = this.state;
     return (
-      <div className="App">
-        <Router>
+      <Router>
+        <div className="App">
           <Nav />
-        </Router>
-        <main>
-          <Landing isLoggedIn={isLoggedIn} />
-        </main>
-        <Footer />
-      </div>
+          <main>
+            <Route exact path="/" component={isLoggedIn ? Landing : Dashboard} />
+            <Route path="/add-property" component={AddProperty} />
+            <Route path="/my-account" component={AccountManagement} />
+            <Route path="/property-details" component={PropertyDetails} />
+          </main>
+          <Footer />
+        </div>
+      </Router>
     );
   }
 }
