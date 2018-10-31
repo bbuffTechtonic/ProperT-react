@@ -10,8 +10,9 @@ const store = require('store');
 class App extends Component {
   constructor() {
     super();
+    const currentYear = Date.now().getFullYear();
     this.state = {
-      fiscalYear: Date.now(),
+      fiscalYear: currentYear,
       rentals: [],
       isLoggedIn: false,
     };
