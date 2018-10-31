@@ -11,8 +11,8 @@ import './App.css';
 const store = require('store');
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     const date = new Date(Date.now());
     const currentYear = date.getFullYear();
     this.state = {

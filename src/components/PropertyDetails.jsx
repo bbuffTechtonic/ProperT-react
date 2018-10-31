@@ -1,6 +1,6 @@
 import React from 'react';
 import IndivPropertyDetails from './IndivPropertyDetails';
-import ExpenseDetails from './ExpenseDetails';
+import ExpenseDetails from './expenses/ExpenseDetails.jsx';
 
 function PropertyDetails() {
   return (

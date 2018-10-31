@@ -1,25 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import LogoPic from '../images/logo-white-on-tp.png';
+import 'reactstrap';
 import '../styles/Nav.css';
 
 // const store = require('store');
 
-const NavBar = function NavBar(props) {
+function NavBar(props) {
   return (
     <div>
       <nav className="navbar navbar-expand-md navbar-dark bg-dark" id="nav-bar">
         <img id="nav-logo" className="navbar-brand" width="120px" src={LogoPic} alt="company logo" />
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon" />
+          <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarText">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <Link to="/" className="nav-link">
-                Dashboard
-                <span className="sr-only">(current)</span>
-              </Link>
+              <Link to="/" className="nav-link">Dashboard</Link>
             </li>
             <li className="nav-item">
               <Link to="/add-property" className="nav-link">Add Property</Link>
@@ -43,6 +41,6 @@ const NavBar = function NavBar(props) {
       </nav>
     </div>
   );
-};
+}
 
 export default NavBar;
