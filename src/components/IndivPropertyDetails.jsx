@@ -71,8 +71,8 @@ class IndivPropertyDetails extends React.Component {
                   <p id="lease-range" className="card-text indiv-prop-spec">Lease Date Range: 6/1/2018 - 5/31/2019</p>
                 </div>
                 <br />
-                <a href="#" className="btn btn-outline-success">Edit Details</a>
-                <a href="view-properties.html" className="btn btn-outline-success">Back to All Properties</a>
+                <a href="#" className="btn btn-success">Edit Details</a>
+                <a href="view-properties.html" className="btn btn-success">Back to All Properties</a>
               </div>
             </div>
           </div>
