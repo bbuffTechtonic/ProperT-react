@@ -5,6 +5,7 @@ import AccountManagement from './components/AccountManagement';
 import PropertyDetails from './components/PropertyDetails';
 import Landing from './components/Landing';
 import Nav from './components/Nav';
+import Footer from './components/Footer';
 import './App.css';
 
 const store = require('store');
@@ -163,7 +164,7 @@ class App extends Component {
         <main>
           <Landing isLoggedIn={isLoggedIn} />
         </main>
-
+        <Footer />
       </div>
     );
   }

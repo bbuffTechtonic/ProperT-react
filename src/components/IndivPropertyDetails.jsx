@@ -18,7 +18,7 @@ class IndivPropertyDetails extends React.Component {
           </div>
           <div className="col">
             <div className="card">
-              <h5 id="indiv-property-details-header" className="card-header">Property Details</h5>
+              <h5 id="indiv-property-details-header" className="card-header text-left">Property Details</h5>
               <div className="card-body text-left">
                 <div id="indiv-prop-address">
                   <h5 className="">123 Elm St.</h5>
