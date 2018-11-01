@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from 'reactstrap';
 import LogoPic from '../images/logo-white-on-tp.png';
-import 'reactstrap';
+import AddProperty from './AddProperty';
 import '../styles/Nav.css';
 
 // const store = require('store');
 
-function NavBar(props) {
+function NavBar({ modal, toggle }) {
   return (
     <div>
       <nav className="navbar navbar-expand-md navbar-dark bg-dark" id="nav-bar">
@@ -20,7 +21,8 @@ function NavBar(props) {
               <Link to="/" className="nav-link">Dashboard</Link>
             </li>
             <li className="nav-item">
-              <Link to="/add-property" className="nav-link">Add Property</Link>
+              <Button color="dark" className="nav-link" onClick={toggle}>Add Property</Button>
+              <AddProperty modal={modal} />
             </li>
             <li className="nav-item">
               <Link to="/account" className="nav-link">My Account</Link>

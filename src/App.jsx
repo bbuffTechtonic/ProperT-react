@@ -19,7 +19,10 @@ class App extends Component {
       fiscalYear: currentYear,
       rentals: [],
       isLoggedIn: false,
+      modal: false,
     };
+
+    this.toggle = this.toggle.bind(this);
   }
 
   componentDidMount() {
@@ -191,15 +194,20 @@ class App extends Component {
   //   this.setState({ list: updatedList });
   // }
 
+  toggle() {
+    this.setState({
+      modal: !this.state.modal
+    });
+  }
+
   render() {
-    const { isLoggedIn } = this.state;
+    const { isLoggedIn, modal } = this.state;
     return (
       <Router>
         <div className="App">
-          <Nav />
+          <Nav toggle={this.toggle} modal={modal} />
           <main>
             <Route exact path="/" render={props => <Landing {...props} isLoggedIn={isLoggedIn} />} />
-            <Route path="/add-property" component={AddProperty} />
             <Route path="/my-account" component={AccountManagement} />
             <Route path="/property-details" component={PropertyDetails} />
           </main>
