@@ -2,6 +2,8 @@ import React from 'react';
 import { Graph } from './Graph.jsx';
 import { Money } from './Money.jsx';
 
+const store = require('store');
+
 class Dashboard extends React.Component {
 
   constructor(props) {
