@@ -40,18 +40,56 @@ export class Graph extends React.Component {
 
     var arrChartData = [];
 
-    var jan2018_One = {name: "Property One", month: "Jan", exp: 850, inc: 1650};
-    var feb2018_One = {name: "Property One", month: "Feb", exp: 943, inc: 1650};
-    var mar2018_One = {name: "Property One", month: "Mar", exp: 580, inc: 1650};
-    var apr2018_One = {name: "Property One", month: "Apr", exp: 570, inc: 1650};
-    var may2018_One = {name: "Property One", month: "May", exp: 890, inc: 1650};
-    var jun2018_One = {name: "Property One", month: "Jun", exp: 750, inc: 1650};
-    var jul2018_One = {name: "Property One", month: "Jul", exp: 790, inc: 1700};
-    var aug2018_One = {name: "Property One", month: "Aug", exp: 650, inc: 1700};
-    var sep2018_One = {name: "Property One", month: "Sep", exp: 990, inc: 1700};
-    var oct2018_One = {name: "Property One", month: "Oct", exp: 850, inc: 1700};
+    if (parseInt(year, 10) === 2018) {
 
-    arrChartData.push(jan2018_One, feb2018_One, mar2018_One, apr2018_One, may2018_One, jun2018_One, jul2018_One, aug2018_One, sep2018_One, oct2018_One);
+      var jan2018_One = {name: "Property One", month: "Jan", exp: 850, inc: 1650};
+      var feb2018_One = {name: "Property One", month: "Feb", exp: 943, inc: 1650};
+      var mar2018_One = {name: "Property One", month: "Mar", exp: 580, inc: 1650};
+      var apr2018_One = {name: "Property One", month: "Apr", exp: 570, inc: 1650};
+      var may2018_One = {name: "Property One", month: "May", exp: 890, inc: 1650};
+      var jun2018_One = {name: "Property One", month: "Jun", exp: 750, inc: 1650};
+      var jul2018_One = {name: "Property One", month: "Jul", exp: 790, inc: 1700};
+      var aug2018_One = {name: "Property One", month: "Aug", exp: 650, inc: 1700};
+      var sep2018_One = {name: "Property One", month: "Sep", exp: 990, inc: 1700};
+      var oct2018_One = {name: "Property One", month: "Oct", exp: 850, inc: 1700};
+
+      arrChartData.push(jan2018_One, feb2018_One, mar2018_One, apr2018_One, may2018_One, jun2018_One, jul2018_One, aug2018_One, sep2018_One, oct2018_One);
+
+    } else if (parseInt(year, 10) === 2017) {
+
+      var jan2017_One = {name: "Property One", month: "Jan", exp: 750, inc: 1600};
+      var feb2017_One = {name: "Property One", month: "Feb", exp: 650, inc: 1600};
+      var mar2017_One = {name: "Property One", month: "Mar", exp: 820, inc: 1600};
+      var apr2017_One = {name: "Property One", month: "Apr", exp: 950, inc: 1600};
+      var may2017_One = {name: "Property One", month: "May", exp: 833, inc: 1600};
+      var jun2017_One = {name: "Property One", month: "Jun", exp: 250, inc: 1600};
+      var jul2017_One = {name: "Property One", month: "Jul", exp: 920, inc: 1650};
+      var aug2017_One = {name: "Property One", month: "Aug", exp: 670, inc: 1650};
+      var sep2017_One = {name: "Property One", month: "Sep", exp: 880, inc: 1650};
+      var oct2017_One = {name: "Property One", month: "Oct", exp: 750, inc: 1650};
+      var nov2017_One = {name: "Property One", month: "Nov", exp: 987, inc: 1650};
+      var dec2017_One = {name: "Property One", month: "Dec", exp: 670, inc: 1650};
+
+      arrChartData.push(jan2017_One, feb2017_One, mar2017_One, apr2017_One, may2017_One, jun2017_One, jul2017_One, aug2017_One, sep2017_One, oct2017_One, nov2017_One, dec2017_One);
+
+    } else {
+
+      var jan2017_Two = {name: "Property Two", month: "Jan", exp: 450, inc: 950};
+      var feb2017_Two = {name: "Property Two", month: "Feb", exp: 560, inc: 950};
+      var mar2017_Two = {name: "Property Two", month: "Mar", exp: 550, inc: 950};
+      var apr2017_Two = {name: "Property Two", month: "Apr", exp: 750, inc: 975};
+      var may2017_Two = {name: "Property Two", month: "May", exp: 540, inc: 975};
+      var jun2017_Two = {name: "Property Two", month: "Jun", exp: 650, inc: 975};
+      var jul2017_Two = {name: "Property Two", month: "Jul", exp: 430, inc: 975};
+      var aug2017_Two = {name: "Property Two", month: "Aug", exp: 450, inc: 975};
+      var sep2017_Two = {name: "Property Two", month: "Sep", exp: 630, inc: 975};
+      var oct2017_Two = {name: "Property Two", month: "Oct", exp: 750, inc: 975};
+      var nov2017_Two = {name: "Property Two", month: "Nov", exp: 550, inc: 975};
+      var dec2017_Two = {name: "Property Two", month: "Dec", exp: 740, inc: 975};
+
+      arrChartData.push(jan2017_Two, feb2017_Two, mar2017_Two, apr2017_Two, may2017_Two, jun2017_Two, jul2017_Two, aug2017_Two, sep2017_Two, oct2017_Two, nov2017_Two, dec2017_Two);
+
+    }
 
     var arrData = arrChartData;
 
@@ -67,7 +105,7 @@ export class Graph extends React.Component {
   //initialize the chart and bar values
   chartSettings(arrData) {
 
-    this.context.clearRect(0, 0, this.state.canvasWidth, this.state.canvasHeight);
+    this.context.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
 
     // chart properties
     this.cMargin = 25;
@@ -88,8 +126,8 @@ export class Graph extends React.Component {
       //var arrVal = arrData[i].split(',');
       //console.log(arrVal);
       //var barVal = parseInt(arrVal[2]) - parseInt(arrVal[1]); //parseInt(arrVal[1]);
-      var barVal = parseInt(arrData[i].inc) - parseInt(arrData[i].exp); //parseInt(arrVal[1]);
-      if (parseInt(barVal) > parseInt(this.maxDataValue))
+      var barVal = parseInt(arrData[i].inc, 10) - parseInt(arrData[i].exp, 10); //parseInt(arrVal[1]);
+      if (parseInt(barVal, 10) > parseInt(this.maxDataValue, 10))
             this.maxDataValue = barVal;
     }
 
@@ -118,14 +156,10 @@ export class Graph extends React.Component {
 
     this.drawMarkers(arrData);
 
-
-
   };
 
   // draw X and Y axis
   drawAxis(x, y, X, Y) {
-
-    console.log('drawaxis x:' + x);
 
     this.context.beginPath();
     this.context.moveTo(x, y);
@@ -137,7 +171,7 @@ export class Graph extends React.Component {
   // draw chart markers on X and Y Axis
   drawMarkers(arrData) {
 
-    var numMarkers = parseInt(this.maxDataValue / this.totLabelsOnYAxis);
+    var numMarkers = parseInt(this.maxDataValue / this.totLabelsOnYAxis, 10);
     this.context.textAlign = 'right';
     this.context.fillStyle = '#000';
 
@@ -180,11 +214,10 @@ export class Graph extends React.Component {
 
   drawChartWithAnimation(arrData) {
 
-    console.log('drawChartWithAnimation ' + arrData.length);
     // Loop through the total bars and draw
     for (var i = 0; i < this.totalBars; i++) {
       //var arrVal = arrData[i].split(",");
-      var bVal = parseInt(arrData[i].inc) - parseInt(arrData[i].exp);
+      var bVal = parseInt(arrData[i].inc, 10) - parseInt(arrData[i].exp, 10);
 
       // If Profit draw Green Bar else draws Orange Bar
       if (bVal >= 0) {
@@ -260,7 +293,6 @@ export class Graph extends React.Component {
 
   drawGreenRectangle(x, y, w, h, fill) {
 
-    console.log('drawgreen' + x);
     // Draws Green Bars
     this.context.beginPath();
     this.context.rect(x, y, w, h);
@@ -280,7 +312,6 @@ export class Graph extends React.Component {
 
   drawOrangeRectangle(x, y, w, h, fill) {
 
-    console.log('draworange' + x);
     //Draws Orange Bars
     this.context.beginPath();
     this.context.rect(x, y, w, h);
@@ -306,7 +337,22 @@ export class Graph extends React.Component {
     this.canvasHeight = canvas.height;
     this.canvasWidth = canvas.width;
 
-    this.barChart();
+    var fY = this.props.fiscalYearProp;
+
+    this.barChart(fY);
+
+  }
+
+  componentDidUpdate() {
+
+    const canvas = this.refs.canvas;
+    this.context = canvas.getContext("2d");
+    this.canvasHeight = canvas.height;
+    this.canvasWidth = canvas.width;
+
+    var fY = this.props.fiscalYearProp;
+
+    this.barChart(fY);
 
   }
 

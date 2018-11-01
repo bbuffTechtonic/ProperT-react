@@ -3,10 +3,10 @@ import Dashboard from './Dashboard';
 import Login from './Login';
 
 function Landing({ isLoggedIn }) {
-  if (isLoggedIn) {
+  // if (isLoggedIn) {
     return <Dashboard />;
-  }
-  return <Login />;
+  // }
+  // return <Login />;
 }
 
 export default Landing;
