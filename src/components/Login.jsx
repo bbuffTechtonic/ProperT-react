@@ -21,21 +21,19 @@ class Login extends React.Component {
   }
 
   handleInputChange(e) {
-    const target = e.target;
-    const value = target.value;
-    const name = target.name;
-
     this.setState({
-      [name]: value,
+      [e.target.name]: e.target.value,
     });
   }
 
   handleLogin(e) {
     e.preventDefault();
-    for (let i = 0; i < this.state.landlords.length; i++) {
-      if (this.state.landlords[i].email === this.state.loginEmail
-      && this.state.landlords[i].password === this.state.loginPassword) {
-        alert('Success! Now figure out how to update the state of your app to show me logged in ya jerk!!! ');
+    const { landlords, loginEmail, loginPassword } = this.state;
+    for (let i = 0; i < landlords.length; i += 1) {
+      if (landlords[i].email === loginEmail
+      && landlords[i].password === loginPassword) {
+        const { handleSuccessfulLogin } = this.props;
+        handleSuccessfulLogin();
         return;
       }
     }
@@ -44,7 +42,8 @@ class Login extends React.Component {
   }
 
   toggleLandingCard(card) {
-    const prevState = this.state.landingCard;
+    const { landingCard } = this.state;
+    const prevState = landingCard;
     const state = prevState.map((x, index) => (card === index ? !x : false));
 
     this.setState({
@@ -53,11 +52,12 @@ class Login extends React.Component {
   }
 
   render() {
+    const { landingCard, loginEmail, loginPassword } = this.state;
     return (
       <Row className="mt-5 justify-content-center">
         <Col sm="10" md="8" lg="6" xl="6">
           <div id="landingCard">
-            <Collapse isOpen={this.state.landingCard[0]} data-parent="#landingCard" id="loginCard" aria-labelledby="loginCard">
+            <Collapse isOpen={landingCard[0]} data-parent="#landingCard" id="loginCard" aria-labelledby="loginCard">
               <Card>
                 <CardBody>
                   <h1 className="text-center">ProperT</h1>
@@ -101,7 +101,7 @@ class Login extends React.Component {
                           aria-describedby="signInEmail"
                           placeholder="Email"
                           required
-                          value={this.state.loginEmail}
+                          value={loginEmail}
                           onChange={this.handleInputChange}
                         />
                       </div>
@@ -124,7 +124,7 @@ class Login extends React.Component {
                           aria-describedby="signInPassword"
                           placeholder="Password"
                           required
-                          value={this.state.loginPassword}
+                          value={loginPassword}
                           onChange={this.handleInputChange}
                         />
                       </div>
@@ -134,7 +134,7 @@ class Login extends React.Component {
                         type="button"
                         className="link-button"
                         onClick={() => this.toggleLandingCard(2)}
-                        aria-expanded={this.state.landingCard[2]}
+                        aria-expanded={landingCard[2]}
                       >
                         <small>Forgot Password?</small>
                       </button>
@@ -154,7 +154,7 @@ class Login extends React.Component {
                           type="button"
                           className="link-button"
                           onClick={() => this.toggleLandingCard(1)}
-                          aria-expanded={this.state.landingCard[1]}
+                          aria-expanded={landingCard[1]}
                         >
                             Sign Up
                         </button>
@@ -164,7 +164,7 @@ class Login extends React.Component {
                 </CardBody>
               </Card>
             </Collapse>
-            <Collapse isOpen={this.state.landingCard[1]} data-parent="#landingCard" id="signUpCard">
+            <Collapse isOpen={landingCard[1]} data-parent="#landingCard" id="signUpCard">
               <Card>
                 <CardBody>
                   <h1 className="text-center">ProperT</h1>
@@ -287,7 +287,7 @@ class Login extends React.Component {
                           type="button"
                           className="link-button"
                           onClick={() => this.toggleLandingCard(0)}
-                          aria-expanded={this.state.landingCard[1]}
+                          aria-expanded={landingCard[1]}
                         >
                           Sign In
                         </button>
@@ -297,7 +297,7 @@ class Login extends React.Component {
                 </CardBody>
               </Card>
             </Collapse>
-            <Collapse isOpen={this.state.landingCard[2]} data-parent="#landingCard" id="forgotPassCard">
+            <Collapse isOpen={landingCard[2]} data-parent="#landingCard" id="forgotPassCard">
               <Card>
                 <CardBody className="pb-2">
                   <h6 className="reset-instructions">
@@ -337,7 +337,7 @@ class Login extends React.Component {
                           type="button"
                           className="link-button"
                           onClick={() => this.toggleLandingCard(0)}
-                          aria-expanded={this.state.landingCard[1]}
+                          aria-expanded={landingCard[1]}
                         >
                           Return to Sign In
                         </button>

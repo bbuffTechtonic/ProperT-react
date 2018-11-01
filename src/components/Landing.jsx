@@ -2,11 +2,12 @@ import React from 'react';
 import Dashboard from './Dashboard';
 import Login from './Login';
 
-function Landing({ isLoggedIn }) {
-  // if (isLoggedIn) {
+function Landing({ isLoggedIn, handleSuccessfulLogin }) {
+  if (isLoggedIn) {
     return <Dashboard />;
-  // }
-  // return <Login />;
+  }
+
+  return <Login handleSuccessfulLogin={handleSuccessfulLogin} />;
 }
 
 export default Landing;
