@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from 'reactstrap';
 import LogoPic from '../images/logo-white-on-tp.png';
 import AddProperty from './AddProperty';
 import '../styles/Nav.css';
@@ -21,7 +20,7 @@ function NavBar({ modal, toggle }) {
               <Link to="/" className="nav-link">Dashboard</Link>
             </li>
             <li className="nav-item">
-              <Button color="dark" className="nav-link" onClick={toggle}>Add Property</Button>
+              <a className="nav-link" id="add-property-modal" onClick={toggle}>Add Property</a>
               <AddProperty modal={modal} />
             </li>
             <li className="nav-item">
