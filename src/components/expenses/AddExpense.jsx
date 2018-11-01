@@ -7,8 +7,7 @@ function AddExpense({ isOpen, toggle }) {
       <div className="modal-content">
         <ModalHeader className="modal-header" id="add-expense-modal-header" toggle={toggle}>
           <h5 className="modal-title">Add Expense</h5>
-          <button type="button" className="close close-modal" data-dismiss="modal" aria-label="Close">
-          </button>
+          <button type="button" className="close close-modal" data-dismiss="modal" aria-label="Close" />
         </ModalHeader>
         <ModalBody>
           <form id="add-expense-form">
@@ -45,7 +44,8 @@ function AddExpense({ isOpen, toggle }) {
                 </div>
               </div>
             </div>
-            <Button type="submit" id="add-expense-save" className="btn btn-success btn-sm" onClick={toggle}>Save</Button>{' '}
+            <Button type="submit" id="add-expense-save" className="btn btn-success btn-sm" onClick={toggle}>Save</Button>
+            {' '}
             <Button type="button" className="btn btn-success btn-sm" data-dismiss="modal" onClick={toggle}>Cancel</Button>
           </form>
         </ModalBody>
