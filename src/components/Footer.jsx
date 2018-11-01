@@ -1,12 +1,14 @@
 import React from 'react';
 import '../styles/Footer.css';
 
-const Footer = function Footer(props) {
+function Footer(props) {
+
   return (
     <footer className="main-footer">
       <div className="container" id="footer-container">
         <div className="row">
           <div className="col-5 offset-1">
+            <span>{props.testProp}</span>
             <span id="copyright-text" className="text-muted d-flex">&copy; 2018 DevFools, LLC</span>
           </div>
           <div className="col-5 footer-links">
@@ -21,6 +23,6 @@ const Footer = function Footer(props) {
       </div>
     </footer>
   );
-};
+}
 
 export default Footer;

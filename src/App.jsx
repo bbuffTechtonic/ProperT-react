@@ -211,7 +211,7 @@ class App extends Component {
             <Route path="/my-account" component={AccountManagement} />
             <Route path="/property-details" component={PropertyDetails} />
           </main>
-          <Footer />
+          <Footer testProp="did this work?" />
         </div>
       </Router>
     );

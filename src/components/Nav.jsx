@@ -38,7 +38,7 @@ function NavBar({ modal, toggle }) {
               </div>
             </li>
           </ul>
-          <a href="landing.html" id="logout-button" className="btn btn-outline-success btn-sm">Logout</a>
+          <button type="button" id="logout-button" className="btn btn-outline-success btn-sm">Logout</button>
         </div>
       </nav>
     </div>

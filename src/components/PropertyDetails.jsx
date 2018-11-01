@@ -1,5 +1,5 @@
 import React from 'react';
-import IndivPropertyDetails from './IndivPropertyDetails';
+import IndivPropertyDetails from './IndivProperty/IndivPropertyDetails';
 import ExpenseDetails from './expenses/ExpenseDetails.jsx';
 
 function PropertyDetails() {

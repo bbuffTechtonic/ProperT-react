@@ -1,6 +1,8 @@
 import React from 'react';
-import PropOnePic from '../images/ppty2.jpg';
-import '../styles/IndivPropDetails.css';
+import { Button } from 'reactstrap';
+import EditProperty from './EditProperty'
+import PropOnePic from '../../images/ppty2.jpg';
+import '../../styles/IndivPropDetails.css';
 
 const store = require('store');
 
@@ -8,12 +10,24 @@ class IndivPropertyDetails extends React.Component {
   constructor() {
     super();
     const myRental = JSON.parse(store.get('rentals'));
-    this.state = { rentals: myRental };
+    this.state = {
+      rentals: myRental,
+      modal: false,
+    };
+
+    this.toggle = this.toggle.bind(this);
+  }
+
+  toggle() {
+    this.setState({
+      modal: !this.state.modal
+    });
   }
 
   render() {
     const displayAddress = this.state.rentals[0].address;
     const displayTenant = this.state.rentals[0].tenantInfo;
+    // const { modal }  = this.state;
 
     return (
       <section id="indiv-property-details">
@@ -40,7 +54,12 @@ class IndivPropertyDetails extends React.Component {
                   <p id="lease-range" className="card-text indiv-prop-spec">{`Lease Date Range: ${displayTenant.leaseStart} - ${displayTenant.leaseEnd}`}</p>
                 </div>
                 <br />
-                <button id="edit-prop-button" className="btn btn-success btn-sm" type="button">Edit Details </button>
+                <EditProperty
+                  isOpen={this.state.modal}
+                  rentals={this.state.rentals}
+                  toggle={this.toggle}
+                   />
+                <Button id="edit-prop-button" className="btn btn-success btn-sm" type="button" onClick={this.toggle}>Edit Details</Button>
                 <button className="btn btn-success btn-sm" type="button">Back to All Properties</button>
               </div>
             </div>
