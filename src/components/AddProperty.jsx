@@ -13,23 +13,23 @@ function AddProperty({ modal, toggle }) {
                   <form id="add-new-property">
                     <div className="form row">
                       <div className="form-group col-md-9">
-                        <label for="address-1">Address 1</label>
+                        <label htmlFor="address-1">Address 1</label>
                         <input type="text" name="address-1" className="form-control" id="address-1" placeholder="12 Main St." />
                       </div>
                       <div className="form-group col-md-3">
-                        <label for="address-2">Address 2</label>
+                        <label htmlFor="address-2">Address 2</label>
                         <input type="text" name="address-2" className="form-control" id="address-2" placeholder="2A" />
                       </div>
                     </div>
                     <div className="form-row">
                       <div className="form-group col-md-6">
-                        <label for="city">City</label>
+                        <label htmlFor="city">City</label>
                         <input type="text" name="city" className="form-control" id="city" placeholder="Kalamazoo" />
                       </div>
                       <div className="form-group col-md-4">
-                        <label for="state">State</label>
+                        <label htmlFor="state">State</label>
                         <select id="state" name="state" className="form-control">
-                        <option value="" selected="selected">State</option>
+                        <option value="Select State"></option>
                         <option value="AL">Alabama</option>
                         <option value="AK">Alaska</option>
                         <option value="AZ">Arizona</option>
@@ -84,37 +84,37 @@ function AddProperty({ modal, toggle }) {
                         </select>
                       </div>
                       <div className="form-group col-md-2">
-                        <label for="zip">Zip</label>
+                        <label htmlFor="zip">Zip</label>
                         <input type="text" name="zip" className="form-control" id="zip" />
                       </div>
                     </div>
                     <div className="form-row">
                       <div className="form-group col-md-12">
-                          <label for="propertyImage">Upload Image</label>
+                          <label htmlFor="propertyImage">Upload Image</label>
                           <input type="file" name="propertyImage" className="form-control-file" id="propertyImage" />
                       </div>
                     </div>
                     <div className="form-row">
                       <div className="form-group col-md-4">
-                        <label for="tenant-name">Tenant Name</label>
+                        <label htmlFor="tenant-name">Tenant Name</label>
                         <input type="text" name="tenant-name" className="form-control" id="tenant-name" placeholder="John Doe" />
                       </div>
                       <div className="form-group col-md-4">
-                        <label for="tenant-email">Tenant Email</label>
+                        <label htmlFor="tenant-email">Tenant Email</label>
                         <input type="email" name="tenant-email" className="form-control" id="tenant-email" placeholder="jdoe@email.com" />
                       </div>
                       <div className="form-group col-md-4">
-                        <label for="rental-amount">Monthly Rent ($)</label>
+                        <label htmlFor="rental-amount">Monthly Rent ($)</label>
                         <input type="text" name="rental-amount" className="form-control" id="rental-amount" placeholder="1,350.00" />
                       </div>
                     </div>
                     <div className="form-row">
                       <div className="form-group col-md-3">
-                        <label for="lease-start">Lease Start:</label>
+                        <label htmlFor="lease-start">Lease Start:</label>
                         <input type="text" name="lease-start" className="form-control" id="lease-start" placeholder="6/1/2018" />
                       </div>
                       <div className="form-group col-md-3">
-                        <label for="lease-end">Lease End:</label>
+                        <label htmlFor="lease-end">Lease End:</label>
                         <input type="text" name="lease-end" className="form-control" id="lease-end" placeholder="5/31/2019" />
                       </div>
                     </div>

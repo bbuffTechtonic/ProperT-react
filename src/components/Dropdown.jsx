@@ -21,7 +21,7 @@ class Dropdown extends Component{
     this.setState({
       headerTitle: address1,
       listOpen: false
-    }, this.props.toggle())
+    })
   }
 
   toggleList = () => {
