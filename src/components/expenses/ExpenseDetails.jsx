@@ -21,7 +21,7 @@ class ExpenseDetails extends Component {
     const { modal } = this.state;
     return (
       <section id="expense-details">
-        <TableButtons toggle={this.toggle} />
+        <TableButtons toggle={this.toggle} isOpen={modal} />
         <AddExpense toggle={this.toggle} isOpen={modal} />
         <div className="row">
           <TableNav />
