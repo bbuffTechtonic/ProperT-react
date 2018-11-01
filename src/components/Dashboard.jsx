@@ -19,10 +19,21 @@ class Dashboard extends React.Component {
     };
   }
 
+  getYearTotals(year) {
+
+    for (var i = 0;i < this.state.rentals.length;i++) {
+
+      
+
+
+
+    }
+
+  }
+
   handleClick(e) {
     this.setState({ fiscalYear: e.target.value });
   }
-
 
   render() {
     const { fiscalYear, totExpenses, totIncome, totProfit } = this.state;
