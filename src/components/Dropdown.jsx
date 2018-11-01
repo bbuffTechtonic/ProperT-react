@@ -37,14 +37,10 @@ class Dropdown extends Component{
       <div className="dd-wrapper">
         <div className="nav-item" onClick={this.toggleList}>
           <div className="nav-link">{headerTitle}</div>
-          {listOpen
-            ? <FontAwesome name="angle-up" size="2x"/>
-            : <FontAwesome name="angle-down" size="2x"/>
-          }
         </div>
         {listOpen && <ul className="navbar-nav mr-auto">
           {list.map((item,i)=> (
-            <li className="nav-link" key={i} onClick={() => this.selectItem(item.address.address1)}>{item.address.address1} {item.selected && <FontAwesome name="check"/>}</li>
+            <li className="nav-link" key={i} onClick={() => this.selectItem(item.address.address1)}>{item.address.address1} {item.selected}</li>
           ))}
         </ul>}
       </div>

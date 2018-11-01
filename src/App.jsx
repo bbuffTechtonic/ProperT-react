@@ -15,7 +15,6 @@ class App extends Component {
     this.state = {
       rentals: [],
       isLoggedIn: false,
-      modal: false,
     };
 
     this.toggle = this.toggle.bind(this);
@@ -74,12 +73,14 @@ class App extends Component {
           description: 'Miles driven',
         },
       ],
-      mortgage: {
+      mortgage: [
+        {
         premium: 1700,
         escrow: 800,
         interest: 85,
-        mortgageIns: 100,
-      },
+        mortgageIns: 100
+        }
+      ],
       maintenance: [
         {
           date: '7/18/2018',
@@ -425,11 +426,11 @@ class App extends Component {
   }
 
   render() {
-    const { isLoggedIn, modal } = this.state;
+    const { isLoggedIn } = this.state;
     return (
       <Router>
         <div className="App">
-          <Nav toggle={this.toggle} modal={modal} />
+          <Nav />
           <main>
             <Route exact path="/" render={props => <Landing {...props} isLoggedIn={isLoggedIn} handleSuccessfulLogin={this.handleSuccessfulLogin} />} />
             <Route path="/add-property" component={AddProperty} />

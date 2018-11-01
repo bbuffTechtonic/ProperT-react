@@ -3,7 +3,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 function AddProperty({ modal, toggle }) {
     return (
-      <Modal isOpen={modal} toggle={toggle} className="">
+      <Modal isOpen={modal} toggle={toggle} size="lg">
         <ModalHeader toggle={toggle}>Add Property</ModalHeader>
         <ModalBody>
         <div className="row">
