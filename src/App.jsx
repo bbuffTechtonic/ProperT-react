@@ -17,6 +17,7 @@ class App extends Component {
       rentals: [],
       isLoggedIn: false,
       currentRental: myRental,
+      landlord1: {firstname:"Patrick",lastName:"Smith", email: "patrick@yoohoo.org",passwrod:"password",avatar:"./images/userOne.jpeg"}
     };
 
     this.handleSuccessfulLogin = this.handleSuccessfulLogin.bind(this);
