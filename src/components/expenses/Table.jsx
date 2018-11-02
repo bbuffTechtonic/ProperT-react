@@ -1,7 +1,7 @@
 import React from 'react';
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
 
-function DisplayTable(props) {
+function DisplayTable({ expenses }) {
   return (
     <Table striped responsive id="expenses-table">
       <Thead className="bg-dark text-light">

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-function EditProperty({isOpen, toggle, rentals}) {
+function EditProperty({isOpen, toggle, rental}) {
 
-  const editAddress = rentals[0].address;
-  const editTenant = rentals[0].tenantInfo;
+  const editAddress = rental.address;
+  const editTenant = rental.tenantInfo;
 
   const newAddress = {};
   const newTenant = {};

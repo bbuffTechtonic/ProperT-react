@@ -3,27 +3,31 @@ import TableButtons from './TableButtons';
 import TableNav from './TableNav';
 import DisplayTable from './Table';
 import AddExpense from './AddExpense';
+const store = require('store');
 
 class ExpenseDetails extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       modal: false,
-      navSelect: "All"
+      navSelect: "All",
     };
+
+    this.handleToggle = this.handleToggle.bind(this);
   }
 
-  handleToggle = () => {
+  handleToggle() {
     const { modal } = this.state;
     this.setState({ modal: !modal });
   }
 
-  handleClick = (e) => {
+  // handleClick(e) {
     
-  }
+  // }
 
   render() {
-    const { modal } = this.state;
+    const { modal, navSelect } = this.state;
+    const { rental } = this.props;
     return (
       <section id="expense-details">
         <TableButtons toggle={this.handleToggle} isOpen={modal} />
@@ -33,7 +37,7 @@ class ExpenseDetails extends Component {
           <div className="col">
             <div className="card">
               <div className="card-body" id="exp-detail-card">
-                <DisplayTable />
+                <DisplayTable expenses={rental.expenses} navSelect={navSelect} />
               </div>
             </div>
           </div>

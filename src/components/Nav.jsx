@@ -10,20 +10,23 @@ const store = require('store');
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {rentals:JSON.parse(store.get('rentals')),
-    modal: false
+    this.state = {
+      rentals: JSON.parse(store.get('rentals')),
+      modal: false,
     };
     this.toggle = this.toggle.bind(this);
   }
 
   toggle() {
+    const { modal } = this.state;
     this.setState({
-      modal: !this.state.modal
+      modal: !modal,
     });
   }
 
-  render (){
-    const {modal} = this.state;
+  render() {
+    const { modal, rentals } = this.state;
+    const { currentRental } = this.props;
     return (
       <div>
         <nav className="navbar navbar-expand-md navbar-dark bg-dark" id="nav-bar">
@@ -44,8 +47,8 @@ class NavBar extends React.Component {
                 <Link to="/account" className="nav-link">My Account</Link>
               </li>
               <Dropdown className="nav-item"
-                title={this.state.rentals[0].address.address1}
-                list={this.state.rentals}
+                title={currentRental.address.address1}
+                list={rentals}
               />
             </ul>
             <button type="button" id="logout-button" className="btn btn-outline-success btn-sm">Logout</button>

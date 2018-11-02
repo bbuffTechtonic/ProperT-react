@@ -12,9 +12,11 @@ const store = require('store');
 class App extends Component {
   constructor() {
     super();
+    const myRental = JSON.parse(store.get('rentals'))[0]
     this.state = {
       rentals: [],
       isLoggedIn: false,
+      currentRental: myRental,
     };
 
     this.handleSuccessfulLogin = this.handleSuccessfulLogin.bind(this);
@@ -419,15 +421,15 @@ class App extends Component {
   }
 
   render() {
-    const { isLoggedIn } = this.state;
+    const { isLoggedIn, currentRental } = this.state;
     return (
       <Router>
         <div className="App">
-          <Nav />
+          <Nav currentRental={currentRental} />
           <main>
             <Route exact path="/" render={props => <Landing {...props} isLoggedIn={isLoggedIn} handleSuccessfulLogin={this.handleSuccessfulLogin} />} />
-            <Route path="/account" component={AccountManagement} />
-            <Route path="/property-details" component={PropertyDetails} />
+            <Route path="/my-account" component={AccountManagement} />
+            <Route path="/property-details" render={props => <PropertyDetails {...props} currentRental={currentRental} />} />
           </main>
           <Footer />
         </div>

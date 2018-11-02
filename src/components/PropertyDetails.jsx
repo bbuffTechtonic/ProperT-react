@@ -1,15 +1,15 @@
 import React from 'react';
 import IndivPropertyDetails from './IndivProperty/IndivPropertyDetails';
-import ExpenseDetails from './expenses/ExpenseDetails.jsx';
+import ExpenseDetails from './expenses/ExpenseDetails';
 
-function PropertyDetails() {
+function PropertyDetails({ currentRental }) {
   return (
     <section id="property-details">
       <section className="container prop-details-container">
-        <IndivPropertyDetails />
+        <IndivPropertyDetails rental={currentRental} />
       </section>
       <section id="expense-details">
-        <ExpenseDetails />
+        <ExpenseDetails rental={currentRental} />
       </section>
     </section>
   );

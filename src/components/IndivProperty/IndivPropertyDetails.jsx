@@ -1,17 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Button } from 'reactstrap';
-import EditProperty from './EditProperty'
+import EditProperty from './EditProperty';
 import PropOnePic from '../../images/ppty2.jpg';
 import '../../styles/IndivPropDetails.css';
 
-const store = require('store');
-
-class IndivPropertyDetails extends React.Component {
-  constructor() {
-    super();
-    const myRental = JSON.parse(store.get('rentals'));
+class IndivPropertyDetails extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
-      rentals: myRental,
       modal: false,
     };
 
@@ -19,16 +15,16 @@ class IndivPropertyDetails extends React.Component {
   }
 
   toggle() {
+    const { modal } = this.state;
     this.setState({
-      modal: !this.state.modal
+      modal: !modal,
     });
   }
 
   render() {
-    const displayAddress = this.state.rentals[0].address;
-    const displayTenant = this.state.rentals[0].tenantInfo;
-    // const { modal }  = this.state;
-
+    const { modal } = this.state;
+    const { rental } = this.props;
+    const { address, tenantInfo } = rental;
     return (
       <section id="indiv-property-details">
         <div className="row">
@@ -40,25 +36,25 @@ class IndivPropertyDetails extends React.Component {
               <h5 id="indiv-property-details-header" className="card-header text-left">Property Details</h5>
               <div className="card-body text-left">
                 <div id="indiv-prop-address">
-                  <h5 className="">{displayAddress.address1}</h5>
-                  <h5 className="">{displayAddress.address2}</h5>
+                  <h5 className="">{address.address1}</h5>
+                  <h5 className="">{address.address2}</h5>
                   <h5 className="">
-                    {`${displayAddress.city}, ${displayAddress.state} ${displayAddress.zip}`}
+                    {`${address.city}, ${address.state} ${address.zip}`}
                   </h5>
                 </div>
                 <br />
                 <div id="prop-specs">
-                  <p id="tenant-name" className="card-text indiv-prop-spec">{`Current Tenant: ${displayTenant.firstName} ${displayTenant.lastName}`}</p>
-                  <p id="tenant-email" className="card-text indiv-prop-spec">{`Current Tenant Email: ${displayTenant.email}`}</p>
-                  <p id="rental-amount" className="card-text indiv-prop-spec">{`Monthly Rental Amount: $${displayTenant.monthlyRent}`}</p>
-                  <p id="lease-range" className="card-text indiv-prop-spec">{`Lease Date Range: ${displayTenant.leaseStart} - ${displayTenant.leaseEnd}`}</p>
+                  <p id="tenant-name" className="card-text indiv-prop-spec">{`Current Tenant: ${tenantInfo.firstName} ${tenantInfo.lastName}`}</p>
+                  <p id="tenant-email" className="card-text indiv-prop-spec">{`Current Tenant Email: ${tenantInfo.email}`}</p>
+                  <p id="rental-amount" className="card-text indiv-prop-spec">{`Monthly Rental Amount: $${tenantInfo.monthlyRent}`}</p>
+                  <p id="lease-range" className="card-text indiv-prop-spec">{`Lease Date Range: ${tenantInfo.leaseStart} - ${tenantInfo.leaseEnd}`}</p>
                 </div>
                 <br />
                 <EditProperty
-                  isOpen={this.state.modal}
-                  rentals={this.state.rentals}
+                  isOpen={modal}
+                  rental={rental}
                   toggle={this.toggle}
-                  />
+                />
                 <Button id="edit-prop-button" className="btn btn-success btn-sm" type="button" onClick={this.toggle}>Edit Details</Button>
                 <button className="btn btn-success btn-sm" type="button">Back to All Properties</button>
               </div>
