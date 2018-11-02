@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-function AddProperty({ modal, toggle }) {
+function AddProperty({ modal, toggle, onSubmit }) {
     return (
       <Modal isOpen={modal} toggle={toggle} size="lg">
         <ModalHeader toggle={toggle}>Add Property</ModalHeader>
@@ -10,7 +10,7 @@ function AddProperty({ modal, toggle }) {
             <div className="col">
               <div className="card">
                 <div className="card-body">
-                  <form id="add-new-property">
+                  <form id="add-new-property" onSubmit={onSubmit}>
                     <div className="form row">
                       <div className="form-group col-md-9">
                         <label htmlFor="address-1">Address 1</label>
@@ -118,9 +118,7 @@ function AddProperty({ modal, toggle }) {
                         <input type="text" name="lease-end" className="form-control" id="lease-end" placeholder="5/31/2019" />
                       </div>
                     </div>
-                    <Button type="submit" id="add-prop-save" className="btn btn-success btn-sm" 
-                    // onClick={this.runSave}
-                    >Save</Button>{' '}
+                    <input type="submit" onClick={toggle} data-dismiss="modal" value="Submit" className="btn btn-success btn-sm"/>
                     <Button type="button" className="btn btn-success btn-sm" data-dismiss="modal" onClick={toggle}>Cancel</Button>
                   </form>
                 </div>
@@ -131,5 +129,4 @@ function AddProperty({ modal, toggle }) {
       </Modal>
     );
 }
-
 export default AddProperty;

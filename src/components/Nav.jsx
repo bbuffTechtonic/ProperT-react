@@ -15,6 +15,7 @@ class NavBar extends React.Component {
       modal: false,
     };
     this.toggle = this.toggle.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   toggle() {
@@ -22,6 +23,42 @@ class NavBar extends React.Component {
     this.setState({
       modal: !modal,
     });
+  }
+
+  handleSubmit(e){
+    e.preventDefault();
+    const address = {
+      address1: e.target[0].value,
+      address2: e.target[1].value,
+      city: e.target[2].value,
+      state: e.target[3].value,
+      zip: e.target[4].value,
+    };
+
+    const tenantInfo = {
+      firstName: e.target[5].value,
+      lastName: e.target[6].value,
+      email: e.target[7].value,
+      monthlyRent: e.target[10].value,
+      leaseStart: e.target[8].value,
+      leaseEnd: e.target[9].value,
+    };
+    const expenses =
+    {
+      mileage: [],
+      mortgage: [],
+      maintenance: [],
+      suppliesGoods: [],
+      misc:[],
+      hoa:[],
+      rent:[]
+    };
+    const newProperty = {address,tenantInfo,expenses};
+    let rentals = [...this.state.rentals];
+    rentals.push(newProperty);
+    store.set('rentals', JSON.stringify(rentals));
+    const value = JSON.parse(store.get('rentals'));
+    this.props.hydrateStateWithStore();
   }
 
   render() {
@@ -41,7 +78,7 @@ class NavBar extends React.Component {
               </li>
               <li className="nav-item">
                 <a className="nav-link" id="add-property-modal" onClick={this.toggle}>Add Property</a>
-                <AddProperty modal={modal} toggle={this.toggle} />
+                <AddProperty modal={modal} toggle={this.toggle} onSubmit={this.handleSubmit}/>
               </li>
               <li className="nav-item">
                 <Link to="/account" className="nav-link">My Account</Link>
