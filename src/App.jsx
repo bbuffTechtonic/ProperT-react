@@ -59,7 +59,6 @@ class App extends Component {
       leaseStart: '6/1/2018',
       leaseEnd: '5/31/2019',
     };
-    //
     // //Expense Object
     const expenses = {
       mileage: [

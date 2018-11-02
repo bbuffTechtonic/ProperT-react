@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import FontAwesome from 'react-fontawesome'
 import onClickOutside from "react-onclickoutside";
+import { Link } from 'react-router-dom';
 
 class Dropdown extends Component{
   constructor(props){
@@ -34,16 +35,19 @@ class Dropdown extends Component{
     const {list} = this.props
     const {listOpen, headerTitle} = this.state
     return(
-      <div className="dd-wrapper">
-        <div className="nav-item" onClick={this.toggleList}>
-          <div className="nav-link">{headerTitle}</div>
+      <Link to="/property-details" className="nav-link">
+        <div className="nav-item" onClick={this.toggleList}>{ headerTitle + " " }
+        {listOpen
+          ? <FontAwesome name="angle-up" size="1x"/>
+          : <FontAwesome name="angle-down" size="1x"/>
+        }
         </div>
         {listOpen && <ul className="navbar-nav mr-auto">
           {list.map((item,i)=> (
             <li className="nav-link" key={i} onClick={() => this.selectItem(item.address.address1)}>{item.address.address1} {item.selected}</li>
           ))}
-        </ul>}
-      </div>
+      </ul>}
+        </Link>
     )
   }
 }

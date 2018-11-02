@@ -46,10 +46,19 @@ class NavBar extends React.Component {
               <li className="nav-item">
                 <Link to="/account" className="nav-link">My Account</Link>
               </li>
-              <Dropdown className="nav-item"
-                title={currentRental.address.address1}
-                list={rentals}
-              />
+              {rentals.length>0?
+                <li className="nav-item">
+                <Dropdown className="nav-item"
+                  title="Select Rental"
+                  list={rentals}
+                />
+                </li>
+                :<li className="nav-item"><Dropdown className="nav-item"
+                  title={"No Properties"}
+                  list={[]}
+                />
+                </li>
+              }
             </ul>
             <button type="button" id="logout-button" className="btn btn-outline-success btn-sm">Logout</button>
           </div>
