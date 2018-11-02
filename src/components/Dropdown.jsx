@@ -38,8 +38,8 @@ class Dropdown extends Component{
       <Link to="/property-details" className="nav-link">
         <div className="nav-item" onClick={this.toggleList}>{ headerTitle + " " }
         {listOpen
-          ? <FontAwesome name="angle-up" size="2x"/>
-          : <FontAwesome name="angle-down" size="2x"/>
+          ? <FontAwesome name="angle-up" />
+          : <FontAwesome name="angle-down" />
         }
         </div>
         {listOpen && <ul className="navbar-nav mr-auto">
