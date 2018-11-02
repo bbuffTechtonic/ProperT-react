@@ -3,7 +3,6 @@ import TableButtons from './TableButtons';
 import TableNav from './TableNav';
 import DisplayTable from './Table';
 import AddExpense from './AddExpense';
-const store = require('store');
 
 class ExpenseDetails extends Component {
   constructor(props) {

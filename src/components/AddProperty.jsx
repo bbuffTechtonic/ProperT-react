@@ -118,7 +118,9 @@ function AddProperty({ modal, toggle }) {
                         <input type="text" name="lease-end" className="form-control" id="lease-end" placeholder="5/31/2019" />
                       </div>
                     </div>
-                    <Button type="submit" id="add-prop-save" className="btn btn-success btn-sm" onClick={this.runSave}>Save</Button>{' '}
+                    <Button type="submit" id="add-prop-save" className="btn btn-success btn-sm" 
+                    // onClick={this.runSave}
+                    >Save</Button>{' '}
                     <Button type="button" className="btn btn-success btn-sm" data-dismiss="modal" onClick={toggle}>Cancel</Button>
                   </form>
                 </div>

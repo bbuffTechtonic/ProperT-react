@@ -2,11 +2,7 @@ import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody } from 'reactstrap';
 import '../../styles/EditProperty.css';
 
-<<<<<<< HEAD
-function EditProperty({isOpen, toggle, rental}) {
-=======
-function EditProperty({ isOpen, toggle, rentals, handleUpdate }) {
->>>>>>> push to pull
+function EditProperty({ isOpen, toggle, rental, handleUpdate }) {
 
   const editAddress = rental.address;
   const editTenant = rental.tenantInfo;

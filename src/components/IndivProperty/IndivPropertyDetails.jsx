@@ -65,7 +65,7 @@ class IndivPropertyDetails extends Component {
                   rental={rental}
                   toggle={this.toggle}
                   handleUpdate={this.handleUpdate}
-                   />
+                />
                 <Button id="edit-prop-button" className="btn btn-success btn-sm" type="button" onClick={this.toggle}>Edit Details</Button>
                 <button className="btn btn-success btn-sm" type="button">Back to All Properties</button>
               </div>
