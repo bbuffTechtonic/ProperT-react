@@ -8,7 +8,7 @@ function PropertyDetails({ currentRental }) {
       <section className="container prop-details-container">
         <IndivPropertyDetails rental={currentRental} />
       </section>
-      <section id="expense-details">
+      <section  className="container" id="expense-details">
         <ExpenseDetails rental={currentRental} />
       </section>
     </section>

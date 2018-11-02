@@ -33,13 +33,7 @@ class ExpenseDetails extends Component {
         <AddExpense toggle={this.handleToggle} isOpen={modal} />
         <div className="row">
           <TableNav handleClick={this.handleClick} />
-          <div className="col">
-            <div className="card">
-              <div className="card-body" id="exp-detail-card">
-                <DisplayTable expenses={rental.expenses} navSelect={navSelect} />
-              </div>
-            </div>
-          </div>
+          <DisplayTable expenses={rental.expenses} navSelect={navSelect} />
         </div>
       </section>
     );

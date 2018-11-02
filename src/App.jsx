@@ -12,7 +12,7 @@ const store = require('store');
 class App extends Component {
   constructor() {
     super();
-    const myRental = JSON.parse(store.get('rentals'))[0]
+    const myRental = JSON.parse(store.get('rentals'))[0];
     this.state = {
       rentals: [],
       isLoggedIn: false,

@@ -5,7 +5,7 @@ function TableNav() {
     <div className="col-md-3">
       <div className="card">
         <div className="card-body" id="exp-nav-card">
-          <nav className="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+          <nav className="nav flex-column nav-pills" id="v-pills-tab">
             <a className="nav-link active bg-success" id="v-pills-all-tab" data-toggle="pill" href="#v-pills-all" role="tab" aria-controls="v-pills-all" aria-selected="true">All</a>
             <a className="nav-link text-success" id="v-pills-mileage-tab" data-toggle="pill" href="#v-pills-mileage" role="tab" aria-controls="v-pills-mileage" aria-selected="false">Mileage</a>
             <a className="nav-link text-success" id="v-pills-mortgage-tab" data-toggle="pill" href="#v-pills-mortgage" role="tab" aria-controls="v-pills-mortgage" aria-selected="false">Mortgage</a>
