@@ -23,6 +23,7 @@ class Dashboard extends React.Component {
 
 
   render() {
+    const { fiscalYear, totExpenses, totIncome, totProfit } = this.state;
     return (
       <section className="dashboard">
         <br />
@@ -33,20 +34,17 @@ class Dashboard extends React.Component {
             <div className="input-group-prepend">
               <label className="input-group-text">Year</label>
             </div>
-            <select onChange={this.handleClick} defaultValue={this.state.fiscalYear} className="custom-select" id="my-year">
+            <select onChange={this.handleClick} defaultValue={fiscalYear} className="custom-select" id="my-year">
               <option value="2018">2018</option>
               <option value="2017">2017</option>
               <option value="2016">2016</option>
               <option value="2015">2015</option>
             </select>
           </div>
-          <div className="col-auto" id="btn-individual-property">
-              <a href="view-properties.html" role="button" className="btn btn-success">View Single Property</a>
-          </div>
         </div>
         <br />
-        <Graph fiscalYearProp={this.state.fiscalYear} />
-        <Money totIncome={this.state.totIncome} totExpenses={this.state.totExpenses} totProfit = {this.state.totProfit} />
+        <Graph fiscalYearProp={fiscalYear} />
+        <Money totIncome={totIncome} totExpenses={totExpenses} totProfit={totProfit} />
         <br />
       </section>
     );
