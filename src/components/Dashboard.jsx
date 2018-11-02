@@ -9,17 +9,16 @@ class Dashboard extends React.Component {
     const date = new Date(Date.now());
     const currentYear = date.getFullYear();
     this.handleClick = this.handleClick.bind(this);
-    this.state = { fiscalYear: currentYear,
-    totExpenses: '10,000.00',
-    totIncome: '20,000.00',
-    totProfit: '10,000.00'}
-
+    this.state = {
+      fiscalYear: currentYear,
+      totExpenses: '10,000.00',
+      totIncome: '20,000.00',
+      totProfit: '10,000.00',
+    };
   }
 
   handleClick(e) {
-
-        this.setState({ fiscalYear: e.target.value });
-
+    this.setState({ fiscalYear: e.target.value });
   }
 
 
@@ -32,7 +31,7 @@ class Dashboard extends React.Component {
         <div id="fiscal-year" className="row justify-content-center">
           <div id="fy-col" className="input-group col-6 col-sm-3">
             <div className="input-group-prepend">
-              <label className="input-group-text" >Year</label>
+              <label className="input-group-text">Year</label>
             </div>
             <select onChange={this.handleClick} defaultValue={this.state.fiscalYear} className="custom-select" id="my-year">
               <option value="2018">2018</option>
@@ -46,8 +45,8 @@ class Dashboard extends React.Component {
           </div>
         </div>
         <br />
-        <Graph fiscalYearProp = {this.state.fiscalYear} />
-        <Money totIncome = {this.state.totIncome} totExpenses = {this.state.totExpenses} totProfit = {this.state.totProfit} />
+        <Graph fiscalYearProp={this.state.fiscalYear} />
+        <Money totIncome={this.state.totIncome} totExpenses={this.state.totExpenses} totProfit = {this.state.totProfit} />
         <br />
       </section>
     );
