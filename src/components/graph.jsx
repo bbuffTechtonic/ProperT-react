@@ -234,62 +234,6 @@ export class Graph extends React.Component {
       }
     }
   };
-  //
-  // drawBlueLine(arrData) {
-  //   var prevX, prevY = 0;
-  //
-  //   prevX = cMarginSpace;
-  //   prevY = cMarginHeight;
-  //
-  //   // Loop through the total bars and draw
-  //   for (var i = 0; i < totalBars; i++) {
-  //
-  //       var arrVal = arrData[i].split(",");
-  //       bVal = parseInt(arrVal[2]);
-  //       bHt = (bVal * cHeight / maxDataValue);
-  //       bX = cMarginSpace + (i * (bWidth + bMargin)) + bMargin;
-  //       bY = cMarginHeight - bHt - 2;
-  //
-  //       //Draw connecting lines
-  //       drawLine(prevX, prevY, bX + (bWidth / 2), bY, 'blue', 3);
-  //       prevX = bX + (bWidth / 2);
-  //       prevY = bY;
-  //   }
-  // };
-  //
-  // drawRedLine(arrData) {
-  //   var prevX, prevY = 0;
-  //
-  //   prevX = cMarginSpace;
-  //   prevY = cMarginHeight;
-  //
-  //   // Loop through the total bars and draw
-  //   for (var i = 0; i < totalBars; i++) {
-  //
-  //       var arrVal = arrData[i].split(",");
-  //       bVal = parseInt(arrVal[1]);
-  //       bHt = (bVal * cHeight / maxDataValue);
-  //       bX = cMarginSpace + (i * (bWidth + bMargin)) + bMargin;
-  //       bY = cMarginHeight - bHt - 2;
-  //
-  //       //Draw connecting lines
-  //       drawLine(prevX, prevY, bX + (bWidth / 2), bY, 'red', 3);
-  //
-  //       prevX = bX + (bWidth / 2);
-  //       prevY = bY;
-  //   }
-  // };
-  //
-  // // Draws the Lines on the Chart
-  // drawLine(startX, startY, endX, endY, strokeStyle, lineWidth) {
-  //   if (strokeStyle != null) context.strokeStyle = strokeStyle;
-  //   if (lineWidth != null) context.lineWidth = lineWidth;
-  //   context.beginPath();
-  //   context.moveTo(startX, startY);
-  //   context.lineTo(endX, endY);
-  //   context.stroke();
-  //   context.closePath();
-  // };
 
   drawGreenRectangle(x, y, w, h, fill) {
 

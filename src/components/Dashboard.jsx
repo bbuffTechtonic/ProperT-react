@@ -12,6 +12,7 @@ class Dashboard extends React.Component {
     const currentYear = date.getFullYear();
     this.handleClick = this.handleClick.bind(this);
     this.state = {
+      rentals: [],
       fiscalYear: currentYear,
       totExpenses: '10,000.00',
       totIncome: '20,000.00',
@@ -19,15 +20,79 @@ class Dashboard extends React.Component {
     };
   }
 
+  async componentDidMount() {
+    const value = JSON.parse(store.get('rentals'));
+    await this.setState({ rentals: value });
+    this.getYearTotals(this.state.fiscalYear);
+  }
+
+  componentDidUpdate() {
+    this.getYearTotals(this.state.fiscalYear);
+  }
+
   getYearTotals(year) {
 
-    for (var i = 0;i < this.state.rentals.length;i++) {
+    let totExpenses = 0;
+    let totIncome = 0;
+    let oYear;
 
-      
-
-
-
+    for (let i = 0;i < this.state.rentals.length;i++) {
+      for (let j = 0;j < this.state.rentals[i].expenses.hoa.length;j++) {
+        oYear = new Date(this.state.rentals[i].expenses.hoa[j].date)
+        if (oYear.getFullYear() === year) {
+          totExpenses = totExpenses + this.state.rentals[i].expenses.hoa[j].amount;
+        }
+      }
     }
+
+    for (let i = 0;i < this.state.rentals.length;i++) {
+      for (let j = 0;j < this.state.rentals[i].expenses.maintenance.length;j++) {
+        oYear = new Date(this.state.rentals[i].expenses.maintenance[j].date)
+        if (oYear.getFullYear() === year) {
+          totExpenses = totExpenses + this.state.rentals[i].expenses.maintenance[j].amount;
+        }
+      }
+    }
+
+    for (let i = 0;i < this.state.rentals.length;i++) {
+      for (let j = 0;j < this.state.rentals[i].expenses.misc.length;j++) {
+        oYear = new Date(this.state.rentals[i].expenses.misc[j].date)
+        if (oYear.getFullYear() === year) {
+          totExpenses = totExpenses + this.state.rentals[i].expenses.misc[j].amount;
+        }
+      }
+    }
+
+    for (let i = 0;i < this.state.rentals.length;i++) {
+      for (let j = 0;j < this.state.rentals[i].expenses.suppliesGoods.length;j++) {
+        oYear = new Date(this.state.rentals[i].expenses.suppliesGoods[j].date)
+        if (oYear.getFullYear() === year) {
+          totExpenses = totExpenses + this.state.rentals[i].expenses.suppliesGoods[j].amount;
+        }
+      }
+    }
+
+    // for (let i = 0;i < this.state.rentals.length;i++) {
+    //   for (let j = 0;j < this.state.rentals[i].expenses.hoa.length;j++) {
+    //     oYear = new Date(this.state.rentals[i].expenses.hoa[j].date)
+    //     if (oYear.getFullYear() === year) {
+    //       totExpenses = totExpenses + this.state.rentals[i].expenses.hoa[j].amount;
+    //     }
+    //   }
+    // }
+
+    for (let i = 0;i < this.state.rentals.length;i++) {
+      for (let j = 0;j < this.state.rentals[i].expenses.rent.length;j++) {
+        oYear = new Date(this.state.rentals[i].expenses.rent[j].date)
+        if (oYear.getFullYear() === year) {
+          totIncome = totIncome + this.state.rentals[i].expenses.rent[j].amount;
+        }
+      }
+    }
+
+    this.setState({ totExpenses: totExpenses,
+                    totIncome: totIncome,
+                    totProfit: totIncome - totExpenses });
 
   }
 
