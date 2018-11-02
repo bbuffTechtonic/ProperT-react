@@ -1,13 +1,15 @@
 import React from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody } from 'reactstrap';
+import '../../styles/EditProperty.css';
 
+<<<<<<< HEAD
 function EditProperty({isOpen, toggle, rental}) {
+=======
+function EditProperty({ isOpen, toggle, rentals, handleUpdate }) {
+>>>>>>> push to pull
 
   const editAddress = rental.address;
   const editTenant = rental.tenantInfo;
-
-  const newAddress = {};
-  const newTenant = {};
 
   return (
     <Modal isOpen={isOpen} toggle={toggle} size="lg">
@@ -37,7 +39,7 @@ function EditProperty({isOpen, toggle, rental}) {
                       <div className="form-group col-md-4">
                         <label htmlFor="state">State</label>
                         <select id="edit-prop-address-state" name="state" className="form-control" defaultValue={editAddress.state}>
-                          <option value="" selected="selected">Select a State</option>
+                          <option value="Select a State" />
                           <option value="AL">Alabama</option>
                           <option value="AK">Alaska</option>
                           <option value="AZ">Arizona</option>
@@ -124,7 +126,7 @@ function EditProperty({isOpen, toggle, rental}) {
                         <input type="text" name="rental-amount" className="form-control" id="edit-rental-amount" defaultValue={editTenant.monthlyRent} />
                       </div>
                     </div>
-                    <Button onClick={toggle} className="btn btn-success btn-sm" id="submit-edit-property" type="submit">Save Changes</Button>
+                    <Button onClick={toggle, handleUpdate} className="btn btn-success btn-sm" id="submit-edit-property" type="submit">Save Changes</Button>
                   </form>
                 </div>
               </div>

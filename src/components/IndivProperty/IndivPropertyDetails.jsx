@@ -12,6 +12,7 @@ class IndivPropertyDetails extends Component {
     };
 
     this.toggle = this.toggle.bind(this);
+    this.handleUpdate = this.handleUpdate.bind(this);
   }
 
   toggle() {
@@ -20,6 +21,15 @@ class IndivPropertyDetails extends Component {
       modal: !modal,
     });
   }
+
+  handleUpdate(e) {
+    e.preventDefault(); // leaving this here to test with console.log
+    console.log(this.state, newAddress);
+
+    const newAddress = {};
+    const newTenant = {};
+  }
+
 
   render() {
     const { modal } = this.state;
@@ -54,7 +64,8 @@ class IndivPropertyDetails extends Component {
                   isOpen={modal}
                   rental={rental}
                   toggle={this.toggle}
-                />
+                  handleUpdate={this.handleUpdate}
+                   />
                 <Button id="edit-prop-button" className="btn btn-success btn-sm" type="button" onClick={this.toggle}>Edit Details</Button>
                 <button className="btn btn-success btn-sm" type="button">Back to All Properties</button>
               </div>
