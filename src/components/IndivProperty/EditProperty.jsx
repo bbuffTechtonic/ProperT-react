@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody } from 'reactstrap';
 import '../../styles/EditProperty.css';
 
-function EditProperty({ isOpen, toggle, rental, handleUpdate }) {
+function EditProperty({ isOpen, toggle, rental, handlePropertyUpdate }) {
 
   const editAddress = rental.address;
   const editTenant = rental.tenantInfo;
@@ -16,11 +16,11 @@ function EditProperty({ isOpen, toggle, rental, handleUpdate }) {
             <div className="col">
               <div className="card">
                 <div className="card-body">
-                  <form id="edit-prop-form">
+                  <form id="edit-prop-form" onSubmit={handlePropertyUpdate}>
                     <div className="form row">
                       <div className="form-group col-md-9">
                         <label htmlFor="address-1">Address 1</label>
-                        <input type="text" name="address-1" className="form-control" id="edit-prop-address-street" defaultValue={editAddress.address1} />
+                        <input type="text" name="address-1" className="form-control" id="edit-prop-address-street" defaultValue={editAddress.address1} readOnly/>
                       </div>
                       <div className="form-group col-md-3">
                         <label htmlFor="address-2">Address 2</label>
@@ -122,7 +122,7 @@ function EditProperty({ isOpen, toggle, rental, handleUpdate }) {
                         <input type="text" name="rental-amount" className="form-control" id="edit-rental-amount" defaultValue={editTenant.monthlyRent} />
                       </div>
                     </div>
-                    <Button onClick={toggle, handleUpdate} className="btn btn-success btn-sm" id="submit-edit-property" type="submit">Save Changes</Button>
+                    <Button onClick={toggle} className="btn btn-success btn-sm" id="submit-edit-property" type="submit">Save Changes</Button>
                   </form>
                 </div>
               </div>
