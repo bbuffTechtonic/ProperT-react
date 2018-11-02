@@ -32,7 +32,8 @@ function AddExpense({ isOpen, toggle }) {
                       </select>
                       <br/>
                       <label htmlFor="add-expense-amount">Amount:</label>
-                      <input type="text" id="add-expense-amount" required /><br/>
+                      <input type="text" id="add-expense-amount" required />
+                      <br/>
                       <div className="image-upload">
                         <label htmlFor="add-expense-image">Image: </label>
                         <label htmlFor="add-expense-image">

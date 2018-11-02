@@ -17,7 +17,6 @@ class App extends Component {
       isLoggedIn: false,
     };
 
-    this.toggle = this.toggle.bind(this);
     this.handleSuccessfulLogin = this.handleSuccessfulLogin.bind(this);
   }
 
@@ -413,12 +412,6 @@ class App extends Component {
   // //   this.setState({ list: updatedList });
   // // }
 
-  toggle() {
-    this.setState({
-      modal: !this.state.modal,
-    });
-  }
-
   handleSuccessfulLogin() {
     this.setState({
       isLoggedIn: true,
@@ -436,7 +429,7 @@ class App extends Component {
             <Route path="/account" component={AccountManagement} />
             <Route path="/property-details" component={PropertyDetails} />
           </main>
-          <Footer testProp="did this work?" />
+          <Footer />
         </div>
       </Router>
     );
