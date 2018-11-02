@@ -433,7 +433,7 @@ class App extends Component {
           <Nav />
           <main>
             <Route exact path="/" render={props => <Landing {...props} isLoggedIn={isLoggedIn} handleSuccessfulLogin={this.handleSuccessfulLogin} />} />
-            <Route path="/my-account" component={AccountManagement} />
+            <Route path="/account" component={AccountManagement} />
             <Route path="/property-details" component={PropertyDetails} />
           </main>
           <Footer testProp="did this work?" />
