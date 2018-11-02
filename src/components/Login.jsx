@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Card, CardBody, Col, Collapse, Row,
 } from 'reactstrap';
@@ -8,9 +9,6 @@ class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      landlords: [{
-        firstName: 'Patrick', lastName: 'Smith', email: 'patrick@yoohoo.com', password: 'password',
-      }],
       loginEmail: '',
       loginPassword: '',
       landingCard: [true, false, false],
@@ -26,16 +24,29 @@ class Login extends React.Component {
     });
   }
 
+  // handleLogin(e) {
+  //   e.preventDefault();
+  //   const { landlords, loginEmail, loginPassword } = this.state;
+  //   for (let i = 0; i < landlords.length; i += 1) {
+  //     if (landlords[i].email === loginEmail
+  //     && landlords[i].password === loginPassword) {
+  //       const { handleSuccessfulLogin } = this.props;
+  //       handleSuccessfulLogin();
+  //       return;
+  //     }
+  //   }
+  //
+  //   alert('Email or Password do not match');
+  // }
+
   handleLogin(e) {
     e.preventDefault();
-    const { landlords, loginEmail, loginPassword } = this.state;
-    for (let i = 0; i < landlords.length; i += 1) {
-      if (landlords[i].email === loginEmail
-      && landlords[i].password === loginPassword) {
-        const { handleSuccessfulLogin } = this.props;
-        handleSuccessfulLogin();
-        return;
-      }
+    const { loginEmail, loginPassword } = this.state;
+    const { landlord1 } = this.props;
+    if (landlord1.email === loginEmail && landlord1.password === loginPassword) {
+      const { handleSuccessfulLogin } = this.props;
+      handleSuccessfulLogin();
+      return;
     }
 
     alert('Email or Password do not match');
@@ -353,5 +364,10 @@ class Login extends React.Component {
     );
   }
 }
+
+Login.propTypes = {
+  landlord1: PropTypes.objectOf(PropTypes.string).isRequired,
+  handleSuccessfulLogin: PropTypes.func.isRequired,
+};
 
 export default Login;

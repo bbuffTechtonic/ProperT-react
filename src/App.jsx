@@ -17,7 +17,9 @@ class App extends Component {
       rentals: [],
       isLoggedIn: false,
       currentRental: myRental,
-      landlord1: {firstname:"Patrick",lastName:"Smith", email: "patrick@yoohoo.org",passwrod:"password",avatar:"./images/userOne.jpeg"}
+      landlord1: {
+        firstname: 'Patrick', lastName: 'Smith', email: 'patrick@yoohoo.org', password: 'password', avatar: './images/userOne.jpeg',
+      },
     };
 
     this.handleSuccessfulLogin = this.handleSuccessfulLogin.bind(this);
@@ -76,11 +78,11 @@ class App extends Component {
       ],
       mortgage: [
         {
-        premium: 1700,
-        escrow: 800,
-        interest: 85,
-        mortgageIns: 100
-        }
+          premium: 1700,
+          escrow: 800,
+          interest: 85,
+          mortgageIns: 100,
+        },
       ],
       maintenance: [
         {
@@ -421,14 +423,14 @@ class App extends Component {
   }
 
   render() {
-    const { isLoggedIn, currentRental } = this.state;
+    const { isLoggedIn, currentRental, landlord1 } = this.state;
     return (
       <Router>
         <div className="App">
           <Nav currentRental={currentRental} />
           <main>
-            <Route exact path="/" render={props => <Landing {...props} isLoggedIn={isLoggedIn} handleSuccessfulLogin={this.handleSuccessfulLogin} />} />
-            <Route path="/my-account" component={AccountManagement} />
+            <Route exact path="/" render={props => <Landing {...props} isLoggedIn={isLoggedIn} landlord1={landlord1} handleSuccessfulLogin={this.handleSuccessfulLogin} />} />
+            <Route path="/account" component={AccountManagement} />
             <Route path="/property-details" render={props => <PropertyDetails {...props} currentRental={currentRental} />} />
           </main>
           <Footer />
