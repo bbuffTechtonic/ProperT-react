@@ -24,6 +24,7 @@ class App extends Component {
 
     this.handleSuccessfulLogin = this.handleSuccessfulLogin.bind(this);
     this.handlePropertyUpdate = this.handlePropertyUpdate.bind(this);
+    this.handleAccountChanges = this.handleAccountChanges.bind(this);
   }
 
   componentDidMount() {
@@ -302,7 +303,7 @@ class App extends Component {
         }
       }
       return index;
-    }
+    };
 
     allRentals.splice(findIndex(), 1);
     allRentals.push(newObj);
@@ -315,9 +316,13 @@ class App extends Component {
 
 
     // console.log(allRentals, "rentals after splice and push");
-
   }
 
+  handleAccountChanges(newLandlordObj) {
+    this.setState({
+      landlord1: newLandlordObj,
+    });
+  }
 
   render() {
     const { isLoggedIn, currentRental, landlord1 } = this.state;
@@ -326,8 +331,8 @@ class App extends Component {
         <div className="App">
           <Nav currentRental={currentRental} hydrateStateWithStore={this.hydrateStateWithStore} />
           <main>
-            <Route exact path="/" render={props => <Landing {...props} isLoggedIn={isLoggedIn} handleSuccessfulLogin={this.handleSuccessfulLogin} />} />
-            <Route path="/my-account" component={AccountManagement} />
+            <Route exact path="/" render={props => <Landing {...props} isLoggedIn={isLoggedIn} landlord1={landlord1} handleSuccessfulLogin={this.handleSuccessfulLogin} />} />
+            <Route path="/account" render={props => <AccountManagement {...props} landlord1={landlord1} handleAccountChanges={this.handleAccountChanges} />} />
             <Route path="/property-details" render={props => <PropertyDetails {...props} currentRental={currentRental} handlePropertyUpdate={this.handlePropertyUpdate} />} />
           </main>
           <Footer />

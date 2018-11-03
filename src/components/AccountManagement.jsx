@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   TabContent, TabPane, Nav, NavItem, NavLink,
 } from 'reactstrap';
@@ -6,10 +7,24 @@ import {
 class AccountManagement extends React.Component {
   constructor(props) {
     super(props);
+    const { landlord1 } = this.props;
     this.state = {
+      editFirstName: landlord1.firstname,
+      editLastName: landlord1.lastName,
+      editEmail: landlord1.email,
+      editAvatar: landlord1.avatar,
+      editPassword: landlord1.password,
       activeTab: '1',
     };
+    this.handleInputChange = this.handleInputChange.bind(this);
     this.toggle = this.toggle.bind(this);
+    this.handleSaveChanges = this.handleSaveChanges.bind(this);
+  }
+
+  handleInputChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
   }
 
   toggle(tab) {
@@ -21,8 +36,23 @@ class AccountManagement extends React.Component {
     }
   }
 
+  handleSaveChanges(e) {
+    e.preventDefault();
+    const {
+      editFirstName, editLastName, editEmail, editPassword, editAvatar,
+    } = this.state;
+    const { handleAccountChanges } = this.props;
+    const newLandlordObj = {
+      firstname: editFirstName, lastName: editLastName, email: editEmail, password: editPassword, avatar: editAvatar,
+    };
+    handleAccountChanges(newLandlordObj);
+    alert('Your changes have been saved');
+  }
+
   render() {
-    const { activeTab } = this.state;
+    const {
+      activeTab, editFirstName, editLastName, editEmail,
+    } = this.state;
     return (
       <div className="container acct-mgmt-container">
         <div className="row justify-content-center">
@@ -52,7 +82,7 @@ class AccountManagement extends React.Component {
                 </Nav>
                 <TabContent activeTab={activeTab}>
                   <TabPane tabId="1">
-                    <form className="text-left">
+                    <form className="text-left" onSubmit={this.handleSaveChanges}>
                       <div className="row justify-content-center">
                         <div className="col-12 col-sm-6 col-lg-5">
                           <div className="form group avatar mt-3">
@@ -98,9 +128,10 @@ class AccountManagement extends React.Component {
                               <input
                                 type="text"
                                 className="form-control"
-                                name="first-name"
+                                name="editFirstName"
+                                Value={editFirstName}
                                 id="first-name"
-                                placeholder="First"
+                                onChange={this.handleInputChange}
                                 aria-describedby="inputGroupPrepend1"
                                 required
                               />
@@ -122,15 +153,16 @@ class AccountManagement extends React.Component {
                               <input
                                 type="text"
                                 className="form-control"
-                                name="last-name"
+                                name="editLastName"
+                                value={editLastName}
+                                onChange={this.handleInputChange}
                                 id="last-name"
-                                placeholder="Last"
                                 aria-describedby="inputGroupPrepend2"
                                 required
                               />
                             </div>
                           </div>
-                          <div className="form group email">
+                          <div className="form group ">
                             <label htmlFor="email">
                               Email Address
                             </label>
@@ -145,10 +177,11 @@ class AccountManagement extends React.Component {
                               </div>
                               <input
                                 type="text"
-                                name="email"
+                                name="editEmail"
+                                value={editEmail}
+                                onChange={this.handleInputChange}
                                 className="form-control"
                                 id="email"
-                                placeholder="Email"
                                 aria-describedby="inputGroupPrepend3"
                                 required
                               />
@@ -165,7 +198,7 @@ class AccountManagement extends React.Component {
                     </form>
                   </TabPane>
                   <TabPane tabId="2">
-                    <form className="text-left">
+                    <form className="text-left" onSubmit={this.handleSaveChanges}>
                       <div className="form group current p-0 col-sm-8 offset-sm-2 col-md-8 offset-md-2 col-lg-6 offset-lg-3 mt-3">
                         <label htmlFor="current">
                           Current Password
@@ -229,10 +262,11 @@ class AccountManagement extends React.Component {
                           </div>
                           <input
                             type="password"
-                            name="confirm-password"
+                            name="editPassword"
                             className="form-control"
                             id="confirm-password"
                             placeholder="Confirm"
+                            onChange={this.handleInputChange}
                             aria-describedby="inputGroupPrepend6"
                             required
                           />
@@ -255,5 +289,10 @@ class AccountManagement extends React.Component {
     );
   }
 }
+
+AccountManagement.propTypes = {
+  landlord1: PropTypes.objectOf(PropTypes.string).isRequired,
+  handleAccountChanges: PropTypes.func.isRequired,
+};
 
 export default AccountManagement;
