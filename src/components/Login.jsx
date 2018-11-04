@@ -11,11 +11,17 @@ class Login extends React.Component {
     this.state = {
       loginEmail: '',
       loginPassword: '',
+      newLandlord: {},
+      signUpFirst: '',
+      signUpLast: '',
+      signUpEmail: '',
+      signUpPassword: '',
       landingCard: [true, false, false],
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.toggleLandingCard = this.toggleLandingCard.bind(this);
+    this.handleSignUp = this.handleSignUp.bind(this);
   }
 
   handleInputChange(e) {
@@ -50,6 +56,32 @@ class Login extends React.Component {
     }
 
     alert('Email or Password do not match');
+  }
+
+  handleSignUp(e) {
+    e.preventDefault();
+    const {
+      signUpFirst, signUpLast, signUpEmail, signUpPassword,
+    } = this.state;
+    const signUpLandlord = {
+      firstName: signUpFirst, lastName: signUpLast, email: signUpEmail, password: signUpPassword,
+    };
+    const { landlord1, handleSuccessfulLogin } = this.props;
+    if (signUpEmail === landlord1.email) {
+      alert('Email has already been registered');
+      return;
+    }
+
+    this.setState({
+      newLandlord: signUpLandlord,
+    });
+    const message = `New account has been created with the following informtion
+    First Name: ${signUpFirst}
+    Last Name: ${signUpLast}
+    Email: ${signUpEmail}
+    Password: ${signUpPassword}`;
+    alert(message);
+    handleSuccessfulLogin();
   }
 
   toggleLandingCard(card) {
@@ -200,7 +232,7 @@ class Login extends React.Component {
                       </div>
                     </div>
                   </div>
-                  <form id="signupForm">
+                  <form id="signupForm" onSubmit={this.handleSignUp}>
                     <div className="form-group first-name">
                       <div className="input-group last">
                         <div className="input-group-prepend">
@@ -213,9 +245,10 @@ class Login extends React.Component {
                         </div>
                         <input
                           type="text"
-                          name="signUpFirstName"
+                          name="signUpFirst"
                           className="form-control"
                           id="signUpFirstName"
+                          onChange={this.handleInputChange}
                           aria-describedby="firstName"
                           placeholder="First"
                           required
@@ -234,9 +267,11 @@ class Login extends React.Component {
                         </div>
                         <input
                           type="text"
-                          name="signUpLastName"
+                          name="signUpLast"
                           className="form-control"
                           id="signUpLastName"
+                          onChange={this.handleInputChange}
+                          aria-describedby="lastName"
                           placeholder="Last"
                           required
                         />
@@ -257,6 +292,7 @@ class Login extends React.Component {
                           name="signUpEmail"
                           className="form-control"
                           id="signUpEmail"
+                          onChange={this.handleInputChange}
                           aria-describedby="signUpEmail"
                           placeholder="Email"
                           required
@@ -278,6 +314,8 @@ class Login extends React.Component {
                           name="signUpPassword"
                           className="form-control"
                           id="signUpPassword"
+                          onChange={this.handleInputChange}
+                          aria-describedby="signUpPassword"
                           placeholder="Create Password"
                           required
                         />
