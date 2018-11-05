@@ -1,6 +1,6 @@
 import React from 'react';
-import { Graph } from './Graph.jsx';
-import { Money } from './Money.jsx';
+import { Graph } from './Graph';
+import { Money } from './Money';
 
 const store = require('store');
 
