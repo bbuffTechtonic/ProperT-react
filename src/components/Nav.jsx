@@ -14,18 +14,16 @@ class NavBar extends React.Component {
       rentals: JSON.parse(store.get('rentals')),
       modal: false,
     };
-    this.toggle = this.toggle.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  toggle() {
+  toggle = () => {
     const { modal } = this.state;
     this.setState({
       modal: !modal,
     });
   }
 
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     e.preventDefault();
     const address = {
       address1: e.target[0].value,

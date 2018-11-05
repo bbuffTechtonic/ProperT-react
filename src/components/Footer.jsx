@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/Footer.css';
 
-function Footer(props) {
+function Footer() {
 
   return (
     <footer className="main-footer">

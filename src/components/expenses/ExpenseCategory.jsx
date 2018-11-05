@@ -2,7 +2,6 @@ import React from 'react';
 
 function ExpenseCategory({ category }) {
   // add key with id when database available
-  // console.log(category)
   return (
     category.map((expense) => (
       <tr className="expense-row">
