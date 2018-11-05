@@ -525,6 +525,7 @@ class App extends Component {
             currentRental={currentRental}
             hydrateStateWithStore={this.hydrateStateWithStore}
             updateCurrentRental={this.updateCurrentRental}
+            isLoggedIn={isLoggedIn}
           />
           <main>
             <Route

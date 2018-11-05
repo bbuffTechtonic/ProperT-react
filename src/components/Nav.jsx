@@ -64,7 +64,7 @@ class NavBar extends React.Component {
 
   render() {
     const { modal, rentals } = this.state;
-    const { currentRental, updateCurrentRental } = this.props;
+    const { currentRental, updateCurrentRental, isLoggedIn } = this.props;
     return (
       <div>
         <nav className="navbar navbar-expand-md navbar-dark bg-dark" id="nav-bar">
@@ -73,40 +73,45 @@ class NavBar extends React.Component {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarText">
-            <ul className="navbar-nav mr-auto">
-              <li className="nav-item">
-                <Link to="/" className="nav-link">Dashboard</Link>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" id="add-property-modal" onClick={this.toggle}>Add Property</a>
-                <AddProperty modal={modal} toggle={this.toggle} onSubmit={this.handleSubmit}/>
-              </li>
-              <li className="nav-item">
-                <Link to="/account" className="nav-link">My Account</Link>
-              </li>
-              {
-                rentals.length > 0
-                  ? <li className="nav-item">
-                      <Dropdown
-                        className="nav-item"
-                        title="Select Rental"
-                        list={rentals}
-                        updateCurrentRental={updateCurrentRental}
-                        currentRental={currentRental}
-                      />
-                    </li>
-                  : <li className="nav-item">
-                      <Dropdown 
-                        className="nav-item"
-                        title={"No Properties"}
-                        list={[]}
-                        updateCurrentRental={updateCurrentRental}
-                        currentRental={currentRental}
-                      />
-                    </li>
-              }
-            </ul>
-            <button type="button" id="logout-button" className="btn btn-outline-success btn-sm">Logout</button>
+            {
+            isLoggedIn &&
+              (
+              <ul className="navbar-nav mr-auto">
+                <li className="nav-item">
+                  <Link to="/" className="nav-link">Dashboard</Link>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" id="add-property-modal" onClick={this.toggle}>Add Property</a>
+                  <AddProperty modal={modal} toggle={this.toggle} onSubmit={this.handleSubmit}/>
+                </li>
+                <li className="nav-item">
+                  <Link to="/account" className="nav-link">My Account</Link>
+                </li>
+                {
+                  rentals.length > 0
+                    ? <li className="nav-item">
+                        <Dropdown
+                          className="nav-item"
+                          title="Select Rental"
+                          list={rentals}
+                          updateCurrentRental={updateCurrentRental}
+                          currentRental={currentRental}
+                        />
+                      </li>
+                    : <li className="nav-item">
+                        <Dropdown 
+                          className="nav-item"
+                          title={"No Properties"}
+                          list={[]}
+                          updateCurrentRental={updateCurrentRental}
+                          currentRental={currentRental}
+                        />
+                      </li>
+                }
+              </ul>
+              )
+            }
+            {isLoggedIn && <button type="button" id="logout-button" className="btn btn-outline-success btn-sm">Logout</button>}
           </div>
         </nav>
       </div>
