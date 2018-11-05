@@ -5,6 +5,7 @@ import AccountManagement from './components/AccountManagement';
 import PropertyDetails from './components/PropertyDetails';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
+import Avatar from './images/userOne.jpeg';
 import './App.css';
 
 const store = require('store');
@@ -17,7 +18,7 @@ class App extends Component {
       isLoggedIn: true,
       currentRental: null,
       landlord1: {
-        firstname: 'Patrick', lastName: 'Smith', email: 'patrick@yoohoo.org', password: 'password', avatar: './images/userOne.jpeg',
+        firstname: 'Patrick', lastName: 'Smith', email: 'patrick@yoohoo.org', password: 'password', Avatar,
       },
     };
   }

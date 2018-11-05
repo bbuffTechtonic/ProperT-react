@@ -12,13 +12,15 @@ class AccountManagement extends React.Component {
       editFirstName: landlord1.firstname,
       editLastName: landlord1.lastName,
       editEmail: landlord1.email,
-      editAvatar: landlord1.avatar,
+      editAvatar: landlord1.Avatar,
       editPassword: landlord1.password,
       activeTab: '1',
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.toggle = this.toggle.bind(this);
     this.handleSaveChanges = this.handleSaveChanges.bind(this);
+    this.handleChangeAvatar = this.handleChangeAvatar.bind(this);
+    this.handleUpdatePassword = this.handleUpdatePassword.bind(this);
   }
 
   handleInputChange(e) {
@@ -36,22 +38,75 @@ class AccountManagement extends React.Component {
     }
   }
 
+  handleChangeAvatar(e) {
+    const preview = document.querySelector('#profilePic');
+    // TODO: refactor document.querySelector to use React Refs
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      preview.src = reader.result;
+      this.setState({ editAvatar: preview.src });
+    };
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  }
+
   handleSaveChanges(e) {
     e.preventDefault();
     const {
-      editFirstName, editLastName, editEmail, editPassword, editAvatar,
+      editFirstName, editLastName, editEmail, editAvatar,
     } = this.state;
-    const { handleAccountChanges } = this.props;
+    const { landlord1, handleAccountChanges } = this.props;
     const newLandlordObj = {
-      firstname: editFirstName, lastName: editLastName, email: editEmail, password: editPassword, avatar: editAvatar,
+      firstname: editFirstName,
+      lastName: editLastName,
+      email: editEmail,
+      password: landlord1.password,
+      Avatar: editAvatar,
     };
     handleAccountChanges(newLandlordObj);
     alert('Your changes have been saved');
   }
 
+  handleUpdatePassword(e) {
+    e.preventDefault();
+    const { editPassword } = this.state;
+    const { landlord1, handleAccountChanges } = this.props;
+    const newLandlordObj = {
+      firstname: landlord1.firstname,
+      lastName: landlord1.lastName,
+      email: landlord1.email,
+      password: editPassword,
+      Avatar: landlord1.Avatar,
+    };
+
+    if (e.target.currentPassword.value !== landlord1.password) {
+      alert('Current password is incorrect');
+      return;
+    }
+
+    if (e.target.newPassword.value.length < 8) {
+      alert('Your password must be at least 8 characters');
+      return;
+    }
+
+    if (e.target.newPassword.value !== editPassword) {
+      alert('Confirm password did not match New password');
+      return;
+    }
+
+    handleAccountChanges(newLandlordObj);
+    alert('Your password has been updated');
+    document.querySelector('#resetPassForm').reset();
+    // TODO: refactor document.querySelector to use React Refs
+  }
+
   render() {
     const {
-      activeTab, editFirstName, editLastName, editEmail,
+      activeTab, editFirstName, editLastName, editEmail, editAvatar,
     } = this.state;
     return (
       <div className="container acct-mgmt-container">
@@ -88,7 +143,7 @@ class AccountManagement extends React.Component {
                           <div className="form group avatar mt-3">
                             <img
                               id="profilePic"
-                              src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
+                              src={editAvatar}
                               alt="No avatar uploaded"
                               className="img-thumbnail img-fluid col-6 offset-3 col-sm-8 offset-sm-2 col-lg-8 offset-lg-2"
                             />
@@ -99,6 +154,7 @@ class AccountManagement extends React.Component {
                                     type="file"
                                     className="custom-file-input"
                                     id="customFile"
+                                    onChange={this.handleChangeAvatar}
                                   />
                                   <label
                                     className="custom-file-label"
@@ -198,7 +254,7 @@ class AccountManagement extends React.Component {
                     </form>
                   </TabPane>
                   <TabPane tabId="2">
-                    <form className="text-left" onSubmit={this.handleSaveChanges}>
+                    <form id="resetPassForm" className="text-left" onSubmit={this.handleUpdatePassword}>
                       <div className="form group current p-0 col-sm-8 offset-sm-2 col-md-8 offset-md-2 col-lg-6 offset-lg-3 mt-3">
                         <label htmlFor="current">
                           Current Password
@@ -214,7 +270,7 @@ class AccountManagement extends React.Component {
                           </div>
                           <input
                             type="password"
-                            name="password"
+                            name="currentPassword"
                             className="form-control"
                             id="password"
                             placeholder="Current"
@@ -226,6 +282,8 @@ class AccountManagement extends React.Component {
                       <div className="form group new p-0 col-sm-8 offset-sm-2 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
                         <label htmlFor="new">
                           New Password
+                          {' '}
+                          <small>(min 8 characters)</small>
                         </label>
                         <div className="input-group new">
                           <div className="input-group-prepend">
@@ -238,10 +296,11 @@ class AccountManagement extends React.Component {
                           </div>
                           <input
                             type="password"
-                            name="new-password"
+                            name="newPassword"
                             className="form-control"
                             id="new-password"
                             placeholder="New"
+                            minLength="8"
                             aria-describedby="inputGroupPrepend5"
                             required
                           />
