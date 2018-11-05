@@ -49,202 +49,292 @@ class App extends Component {
   }
 
   hydrateStateWithStore() {
-    // const address = {
-    //   address1: '123 Elm St.',
-    //   address2: '#305',
-    //   city: 'Denver',
-    //   state: 'CO',
-    //   zip: 80209,
-    // };
-    //
-    // const tenantInfo = {
-    //   firstName: 'Maggie',
-    //   lastName: 'Brown',
-    //   email: 'maggie@abc.org',
-    //   monthlyRent: 1750,
-    //   leaseStart: '6/1/2018',
-    //   leaseEnd: '5/31/2019',
-    // };
-    // // //Expense Object
-    // const expenses = {
-    //   mileage: [
-    //     {
-    //       date: '7/5/2018',
-    //       amount: 25,
-    //       description: 'Miles driven',
-    //     },
-    //     {
-    //       date: '8/18/2018',
-    //       amount: 25,
-    //       description: 'Miles driven',
-    //     },
-    //   ],
-    //   mortgage: [
-    //     {
-    //       premium: 1700,
-    //       escrow: 800,
-    //       interest: 85,
-    //       mortgageIns: 100,
-    //     },
-    //   ],
-    //   maintenance: [
-    //     {
-    //       date: '7/18/2018',
-    //       description: 'cleaning',
-    //       amount: 160,
-    //       image: '../images/receipt.jpg',
-    //     },
-    //   ],
-    //   suppliesGoods: [
-    //     {
-    //       date: '9/01/2018',
-    //       description: 'bathroom cleaning supplies',
-    //       amount: 25,
-    //       image: '../images/receipt.jpg',
-    //     },
-    //   ],
-    //   misc: [
-    //     {
-    //       date: '7/18/2018',
-    //       description: 'painting living room wall',
-    //       amount: 800,
-    //       image: '../images/receipt.jpg',
-    //     },
-    //   ],
-    //   hoa: [
-    //     {
-    //       date: '6/1/2018',
-    //       amount: 50,
-    //     },
-    //   ],
-    //   rent: [
-    //     {
-    //       date: '6/5/2018',
-    //       amount: 1750,
-    //     },
-    //     {
-    //       date: '7/2/2018',
-    //       amount: 1750,
-    //     },
-    //     {
-    //       date: '8/5/2018',
-    //       amount: 1750,
-    //     },
-    //   ],
-    // };
-    //
-    // const Prop2 = {
-    //   address:
-    //   {
-    //     address1: '800 Water St.',
-    //     address2: '2B',
-    //     city: 'New York',
-    //     state: 'NY',
-    //     zip: 10410,
-    //   },
-    //   tenantInfo: {
-    //     firstName: 'Celeste',
-    //     lastName: 'Green',
-    //     email: 'celeste@def.org',
-    //     monthlyRent: 4850,
-    //     leaseStart: '4/1/2018',
-    //     leaseEnd: '5/31/2019',
-    //   },
-    //   expenses: {
-    //     mileage: [
-    //       {
-    //         date: '7/5/2018',
-    //         amount: 25,
-    //         description: 'Miles driven',
-    //       },
-    //       {
-    //         date: '8/18/2018',
-    //         amount: 25,
-    //         description: 'Miles driven',
-    //       },
-    //       {
-    //         date: '9/18/2018',
-    //         amount: 50,
-    //         description: 'Miles driven',
-    //       },
-    //     ],
-    //     mortgage: [{
-    //       premium: 3500,
-    //       escrow: 800,
-    //       interest: 85,
-    //       mortgageIns: 100,
-    //     }],
-    //     maintenance: [
-    //       {
-    //         date: '7/18/2018',
-    //         description: 'cleaning',
-    //         amount: 160,
-    //         image: '../images/receipt.jpg',
-    //       },
-    //       {
-    //         date: '8/18/2018',
-    //         description: 'cleaning',
-    //         amount: 260,
-    //         image: '../images/receipt.jpg',
-    //       },
-    //     ],
-    //     suppliesGoods: [
-    //       {
-    //         date: '9/01/2018',
-    //         description: 'bathroom cleaning supplies',
-    //         amount: 25,
-    //         image: '../images/receipt.jpg',
-    //       },
-    //       {
-    //         date: '10/01/2018',
-    //         description: 'bathroom cleaning supplies',
-    //         amount: 25,
-    //         image: '../images/receipt.jpg',
-    //       },
-    //     ],
-    //     misc: [
-    //       {
-    //         date: '7/18/2018',
-    //         description: 'painting living room wall',
-    //         amount: 800,
-    //         image: '../images/receipt.jpg',
-    //       },
-    //     ],
-    //     hoa: [
-    //       {
-    //         date: '6/1/2018',
-    //         amount: 50,
-    //       },
-    //       {
-    //         date: '7/1/2018',
-    //         amount: 50,
-    //       },
-    //     ],
-    //     rent: [
-    //       {
-    //         date: '6/5/2018',
-    //         amount: 4850,
-    //       },
-    //       {
-    //         date: '7/2/2018',
-    //         amount: 4850,
-    //       },
-    //       {
-    //         date: '8/5/2018',
-    //         amount: 4850,
-    //       },
-    //       {
-    //         date: '9/5/2018',
-    //         amount: 4850,
-    //       },
-    //     ],
-    //   },
-    // };
-    // const newProp = { address, tenantInfo, expenses };
-    // const rentals = [];
-    // rentals.push(newProp);
-    // rentals.push(Prop2);
-    // store.set('rentals', JSON.stringify(rentals));
+//   const Prop1 = {
+//       address:
+//       {
+//         address1: '800 Water St.',
+//         address2: '2B',
+//         city: 'New York',
+//         state: 'NY',
+//         zip: 10410,
+//       },
+//       tenantInfo:
+//       {
+//         firstName: 'Celeste',
+//         lastName: 'Green',
+//         email: 'celeste@def.org',
+//         monthlyRent: 8850,
+//         leaseStart: '4/1/2018',
+//         leaseEnd: '5/31/2019',
+//       },
+//       expenses:
+//       {
+//         mileage: [
+//         {
+//           date: '7/5/2018',
+//           amount: 25,
+//           description: 'Miles driven',
+//           image: "none",
+//           category: "mileage",
+//         },
+//         {
+//           date: '8/5/2018',
+//           amount: 38,
+//           description: 'Miles driven',
+//           image: "none",
+//           category: "mileage",
+//         },
+//         {
+//           date: '9/17/2018',
+//           amount: 55,
+//           description: 'Miles driven',
+//           image: "none",
+//           category: "mileage",
+//         },
+//       ],
+//       mortgage: [
+//         {
+//           date: '7/5/2018',
+//           amount: 2500,
+//           description: 'Monthly Mortage',
+//           image: "none",
+//           category: "mortgage",
+//         },
+//       ],
+//       maintenance: [
+//         {
+//           date: '7/18/2018',
+//           description: 'cleaning',
+//           amount: 160,
+//           image: '../images/receipt.jpg',
+//           category: 'maintenance',
+//         },
+//         {
+//           date: '8/18/2018',
+//           description: 'cleaning',
+//           amount: 260,
+//           image: '../images/receipt.jpg',
+//           category: 'maintenance',
+//         },
+//       ],
+//       suppliesGoods: [
+//         {
+//           date: '9/01/2018',
+//           description: 'bathroom cleaning supplies',
+//           amount: 25,
+//           image: '../images/receipt.jpg',
+//          category: 'supplies/goods',
+//         },
+//         {
+//           date: '10/01/2018',
+//           description: 'bathroom cleaning supplies',
+//           amount: 25,
+//           image: '../images/receipt.jpg',
+//          category: 'supplies/goods',
+//         },
+//       ],
+//       misc: [
+//         {
+//           date: '7/18/2018',
+//           description: 'painting living room wall',
+//           amount: 800,
+//           image: '../images/receipt.jpg',
+//          category: 'miscellaneous',
+//         },
+//       ],
+//       hoa: [
+//         {
+//           date: '7/18/2018',
+//           description: 'monthly hoa fees',
+//           amount: 80,
+//           image: '../images/receipt.jpg',
+//          category: 'hoa',
+//         },
+//         {
+//           date: '8/18/2018',
+//           description: 'monthly hoa fees',
+//           amount: 80,
+//           image: '../images/receipt.jpg',
+//          category: 'hoa',
+//         },
+//       ],
+//       rent: [
+//         {
+//           date: '7/18/2018',
+//           description: 'monthly rent',
+//           amount: 8850,
+//           image: '../images/receipt.jpg',
+//          category: 'rent',
+//         },
+//         {
+//           date: '8/18/2018',
+//           description: 'monthly rent',
+//           amount: 8850,
+//           image: '../images/receipt.jpg',
+//          category: 'rent',
+//         },
+//         {
+//           date: '9/18/2018',
+//           description: 'monthly rent',
+//           amount: 8850,
+//           image: '../images/receipt.jpg',
+//          category: 'rent',
+//         },
+//         {
+//           date: '10/18/2018',
+//           description: 'monthly rent',
+//           amount: 8850,
+//           image: '../images/receipt.jpg',
+//          category: 'rent',
+//         },
+//       ],
+//     },
+//   };
+//   const Prop2 = {
+//     address:
+//     {
+//       address1: '75 Market St.',
+//       address2: '101E',
+//       city: 'Denver',
+//       state: 'CO',
+//       zip: 80102,
+//     },
+//     tenantInfo:
+//     {
+//       firstName: 'Bailey',
+//       lastName: 'Thomas',
+//       email: 'bailey@email.com',
+//       monthlyRent: 2850,
+//       leaseStart: '4/1/2018',
+//       leaseEnd: '5/31/2019',
+//     },
+//     expenses:
+//     {
+//       mileage: [
+//       {
+//         date: '7/15/2018',
+//         amount: 20,
+//         description: 'Miles driven',
+//         image: "none",
+//         category: "mileage",
+//       },
+//       {
+//         date: '10/5/2018',
+//         amount: 30,
+//         description: 'Miles driven',
+//         image: "none",
+//         category: "mileage",
+//       },
+//       {
+//         date: '11/1/2018',
+//         amount: 55,
+//         description: 'Miles driven',
+//         image: "none",
+//         category: "mileage",
+//       },
+//     ],
+//     mortgage: [
+//       {
+//         date: '7/5/2018',
+//         amount: 2500,
+//         description: 'Monthly Mortage',
+//         image: "none",
+//         category: "mortgage",
+//       },
+//     ],
+//     maintenance: [
+//       {
+//         date: '7/18/2018',
+//         description: 'cleaning',
+//         amount: 160,
+//         image: '../images/receipt.jpg',
+//         category: 'maintenance',
+//       },
+//       {
+//         date: '8/18/2018',
+//         description: 'cleaning',
+//         amount: 260,
+//         image: '../images/receipt.jpg',
+//         category: 'maintenance',
+//       },
+//     ],
+//     suppliesGoods: [
+//       {
+//         date: '9/01/2018',
+//         description: 'bathroom cleaning supplies',
+//         amount: 25,
+//         image: '../images/receipt.jpg',
+//        category: 'supplies/goods',
+//       },
+//       {
+//         date: '10/01/2018',
+//         description: 'bathroom cleaning supplies',
+//         amount: 25,
+//         image: '../images/receipt.jpg',
+//        category: 'supplies/goods',
+//       },
+//     ],
+//     misc: [
+//       {
+//         date: '7/18/2018',
+//         description: 'painting living room wall',
+//         amount: 800,
+//         image: '../images/receipt.jpg',
+//        category: 'miscellaneous',
+//       },
+//     ],
+//     hoa: [
+//       {
+//         date: '7/18/2018',
+//         description: 'monthly hoa fees',
+//         amount: 80,
+//         image: '../images/receipt.jpg',
+//        category: 'hoa',
+//       },
+//       {
+//         date: '8/18/2018',
+//         description: 'monthly hoa fees',
+//         amount: 80,
+//         image: '../images/receipt.jpg',
+//        category: 'hoa',
+//       },
+//     ],
+//     rent: [
+//       {
+//         date: '7/18/2018',
+//         description: 'monthly rent',
+//         amount: 2850,
+//         image: '../images/receipt.jpg',
+//        category: 'rent',
+//       },
+//       {
+//         date: '8/18/2018',
+//         description: 'monthly rent',
+//         amount: 2850,
+//         image: '../images/receipt.jpg',
+//        category: 'rent',
+//       },
+//       {
+//         date: '9/18/2018',
+//         description: 'monthly rent',
+//         amount: 2850,
+//         image: '../images/receipt.jpg',
+//        category: 'rent',
+//       },
+//       {
+//         date: '10/18/2018',
+//         description: 'monthly rent',
+//         amount: 2850,
+//         image: '../images/receipt.jpg',
+//        category: 'rent',
+//       },
+//     ],
+//   },
+// };
+//     const rentals = [];
+//     rentals.push(Prop1);
+//     rentals.push(Prop2);
+//     store.set('rentals', JSON.stringify(rentals));
     const value = JSON.parse(store.get('rentals'));
     this.setState({ rentals: value });
   }
