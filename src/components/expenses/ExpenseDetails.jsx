@@ -10,7 +10,11 @@ class ExpenseDetails extends Component {
     const { rental } = this.props;
     this.state = {
       modal: false,
+<<<<<<< HEAD
       currentExpenses: rental.expenses,
+=======
+      navSelect: 'All',
+>>>>>>> add expense modal working
     };
   }
 
@@ -19,6 +23,7 @@ class ExpenseDetails extends Component {
     this.setState({ modal: !modal });
   }
 
+<<<<<<< HEAD
   handleSelectedExpense = (e) => {
     const selectedExpense = e.target.textContent === "Supplies/Goods" ? "suppliesGoods" : e.target.textContent.toLowerCase();
     const { rental } = this.props;
@@ -51,14 +56,26 @@ class ExpenseDetails extends Component {
       }
     this.setState({ currentExpenses: expenses });
   }
+=======
+  // handleClick(e) {
+
+  // }
+>>>>>>> add expense modal working
 
   render() {
     const { modal, currentExpenses } = this.state;
     const { rental } = this.props;
+    const { expenses } = rental;
+    const { handleAddExpense } = this.props;
     return (
       <section id="expense-details">
         <TableButtons toggle={this.handleToggle} isOpen={modal} />
-        <AddExpense toggle={this.handleToggle} isOpen={modal} />
+        <AddExpense
+          toggle={this.handleToggle}
+          isOpen={modal}
+          rental={rental}
+          handleAddExpense={handleAddExpense}
+        />
         <div className="row">
           <TableNav selectExpense={this.handleSelectedExpense} />
           <DisplayTable currentExpenses={currentExpenses} rental={rental} />

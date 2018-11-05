@@ -8,10 +8,10 @@ function EditProperty({ isOpen, toggle, rental, handlePropertyUpdate }) {
   const editTenant = rental.tenantInfo;
 
   return (
-    <Modal isOpen={isOpen} toggle={toggle} size="lg">
+    <Modal id="edit-property-modal" isOpen={isOpen} toggle={toggle} size="lg">
       <ModalHeader toggle={toggle} id="edit-prop-modal-header">Edit Your Property</ModalHeader>
       <ModalBody>
-        <div className="modal-bodycontainer-fluid">
+        <div className="modal-body container-fluid">
           <div className="row">
             <div className="col">
               <div className="card">

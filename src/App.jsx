@@ -26,6 +26,7 @@ class App extends Component {
     this.handlePropertyUpdate = this.handlePropertyUpdate.bind(this);
     this.handleAccountChanges = this.handleAccountChanges.bind(this);
     this.hydrateStateWithStore = this.hydrateStateWithStore.bind(this);
+    this.handleAddExpense = this.handleAddExpense.bind(this);
   }
 
   componentDidMount() {
@@ -352,6 +353,7 @@ class App extends Component {
 
   handlePropertyUpdate(e) {
     e.preventDefault();
+
     const allRentals = JSON.parse(store.get('rentals'));
 
     const editedAddress = {
@@ -394,18 +396,111 @@ class App extends Component {
       return index;
     };
 
-    allRentals.splice(findIndex(), 1);
-    allRentals.push(newObj);
-
+    allRentals.splice(findIndex(), 1, newObj);
     store.set('rentals', JSON.stringify(allRentals));
-    console.log(allRentals);
-
-    // SOMETHING WRONG WHEN THIS RUNS!!!
     this.hydrateStateWithStore();
-
-
-    // console.log(allRentals, "rentals after splice and push");
   }
+
+
+  handleAddExpense(e) {
+    e.preventDefault();
+
+    const allRentals = JSON.parse(store.get('rentals'));
+    const temp = {...this.state.currentRental};
+    let newExpenseToAdd = {};
+    const expenseType = e.target[2].value;
+
+    switch(expenseType) {
+      case 'mileage':
+        newExpenseToAdd = {
+          date: e.target[0].value,
+          amount: e.target[3].value,
+          description: e.target[1].value,
+        }
+        temp.expenses.mileage.push(newExpenseToAdd);
+        console.log(temp.expenses.mileage);
+        break;
+      case 'mortgage':
+        newExpenseToAdd = {
+          date: e.target[0].value,
+          amount: e.target[3].value,
+          description: e.target[1].value,
+        }
+        temp.expenses.mortgage.push(newExpenseToAdd);
+        console.log(temp.expenses.mortgage);
+        break;
+      case 'maintenance':
+        newExpenseToAdd = {
+          date: e.target[0].value,
+          amount: e.target[3].value,
+          description: e.target[1].value,
+        }
+        temp.expenses.maintenance.push(newExpenseToAdd);
+        console.log(temp.expenses.maintenance);
+        break;
+      case 'suppliesGoods':
+        newExpenseToAdd = {
+          date: e.target[0].value,
+          amount: e.target[3].value,
+          description: e.target[1].value,
+        }
+        temp.expenses.suppliesGoods.push(newExpenseToAdd);
+        console.log(temp.expenses.suppliesGoods);
+        break;
+      case 'hoa':
+        newExpenseToAdd = {
+          date: e.target[0].value,
+          amount: e.target[3].value,
+          description: e.target[1].value,
+        }
+        temp.expenses.hoa.push(newExpenseToAdd);
+        console.log(temp.expenses.hoa);
+        break;
+      case 'rent':
+        newExpenseToAdd = {
+          date: e.target[0].value,
+          amount: e.target[3].value,
+          description: e.target[1].value,
+        }
+        temp.expenses.rent.push(newExpenseToAdd);
+        console.log(temp.expenses.rent);
+        break;
+      case 'misc':
+        newExpenseToAdd = {
+          date: e.target[0].value,
+          amount: e.target[3].value,
+          description: e.target[1].value,
+        }
+        temp.expenses.misc.push(newExpenseToAdd);
+        console.log(temp.expenses.misc);
+        break;
+      default:
+        console.log('default - Not a valid expense');
+    }
+
+    const toChange = allRentals.find((element) => {
+      if (element.address.address1 === temp.address.address1) {
+        return element;
+      }
+      console.log('error');
+      return null;
+    })
+
+    const findIndex = () => {
+      let index = 0;
+      for (let i = 0; i < allRentals.length; i++) {
+        if (allRentals[i].address.address1 === temp.address.address1) {
+          index = allRentals.indexOf(toChange);
+        }
+      }
+      return index;
+    };
+
+    allRentals.splice(findIndex(), 1, temp);
+    store.set('rentals', JSON.stringify(allRentals));
+    this.hydrateStateWithStore();
+  }
+
 
   handleAccountChanges(newLandlordObj) {
     this.setState({
@@ -430,7 +525,7 @@ class App extends Component {
           <main>
             <Route exact path="/" render={props => <Landing {...props} isLoggedIn={isLoggedIn} landlord1={landlord1} handleSuccessfulLogin={this.handleSuccessfulLogin} />} />
             <Route path="/account" render={props => <AccountManagement {...props} landlord1={landlord1} handleAccountChanges={this.handleAccountChanges} />} />
-            <Route path="/property-details" render={props => <PropertyDetails {...props} currentRental={currentRental} handlePropertyUpdate={this.handlePropertyUpdate} />} />
+            <Route path="/property-details" render={props => <PropertyDetails {...props} currentRental={currentRental} handlePropertyUpdate={this.handlePropertyUpdate} handleAddExpense={this.handleAddExpense} />} />
           </main>
           <Footer />
         </div>

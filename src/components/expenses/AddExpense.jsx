@@ -1,56 +1,68 @@
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody } from 'reactstrap';
 
-function AddExpense({ isOpen, toggle }) {
+function AddExpense({ isOpen, toggle, rental, handleAddExpense }) {
   return (
-    <Modal id="add-expense-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" isOpen={isOpen} toggle={toggle}>
-      <div className="modal-content">
-        <ModalHeader className="modal-header" id="add-expense-modal-header" toggle={toggle}>
-          <h5 className="modal-title">Add Expense</h5>
-          <button type="button" className="close close-modal" data-dismiss="modal" aria-label="Close" />
-        </ModalHeader>
-        <ModalBody>
-          <form id="add-expense-form">
-            <div className="row">
-              <div className="col">
-                <div className="card">
-                  <div className="card-body">
-                    <div id="add-expense-container">
-                      <label htmlFor="add-expense-date">Date:</label>
-                      <input type="text" id="add-expense-date" required />
-                      <br/>
-                      <label htmlFor="add-expense-description">Description:</label>
-                      <input type="text" id="add-expense-description" required />
-                      <br/>
-                      <label htmlFor="add-expense-category">Category:</label>
-                      <select className="custom-select col-5" id="add-expense-category-select" required>
-                        <option value="mileage">Mileage</option>
-                        <option value="mortgage">Mortgage</option>
-                        <option value="maintenance">Maintenance</option>
-                        <option value="suppliesGoods">Supplies/Goods</option>
-                        <option value="misc">Misc</option>
-                      </select>
-                      <br/>
-                      <label htmlFor="add-expense-amount">Amount:</label>
-                      <input type="text" id="add-expense-amount" required />
-                      <br/>
-                      <div className="image-upload">
-                        <label htmlFor="add-expense-image">Image: </label>
-                        <label htmlFor="add-expense-image">
-                          <input type="file" name="pic" accept="image/*" id="add-expense-image" />
-                        </label>
+    <Modal id="add-expense-modal" isOpen={isOpen} toggle={toggle}>
+      <ModalHeader className="modal-header" id="add-expense-modal-header" toggle={toggle}>
+        Add Expense
+      </ModalHeader>
+      <ModalBody>
+        <div className="modal-body container-fluid">
+          <div className="row">
+            <div className="col">
+              <div className="card">
+                <div className="card-body">
+                  <form id="add-expense-form" onSubmit={handleAddExpense}>
+                    <div className="form-row">
+                      <div className="form-group col-md-12">
+                        <label htmlFor="add-expense-date">Date: </label>
+                        <input type="date" id="add-expense-date" required />
                       </div>
                     </div>
-                  </div>
+                    <div className="form-row">
+                      <div className="form-group col-md-12">
+                        <label htmlFor="add-expense-description">Description: </label>
+                        <input type="text" id="add-expense-description" required />
+                      </div>
+                    </div>
+                    <div className="form-row">
+                      <div className="form-group col-md-12">
+                        <label htmlFor="add-expense-category">Category: </label>
+                        <select className="custom-select col-5" id="add-expense-category-select" required>
+                          <option value="mileage">Mileage</option>
+                          <option value="mortgage">Mortgage</option>
+                          <option value="maintenance">Maintenance</option>
+                          <option value="suppliesGoods">Supplies/Goods</option>
+                          <option value="hoa">HOA Fees</option>
+                          <option value="rent">Rent Payment Received</option>
+                          <option value="misc">Misc</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div className="form-row">
+                      <div className="form-group col-md-12">
+                        <label htmlFor="add-expense-amount">Amount: </label>
+                        <input type="number" id="add-expense-amount" required />
+                      </div>
+                    </div>
+                    <div className="form-row">
+                      <div className="form-group col-md-12 image-upload">
+                        <label htmlFor="add-expense-image">Image: </label>
+                        <input type="file" name="pic" accept="image/*" id="add-expense-image" />
+                      </div>
+                    </div>
+                    <Button onClick={toggle} className="btn btn-success btn-sm" id="add-expense-save" type="submit">Save</Button>
+                  </form>
                 </div>
               </div>
             </div>
-            <Button type="submit" id="add-expense-save" className="btn btn-success btn-sm" onClick={toggle}>Save</Button>
-            {' '}
-            <Button type="button" className="btn btn-success btn-sm" data-dismiss="modal" onClick={toggle}>Cancel</Button>
-          </form>
-        </ModalBody>
-      </div>
+          </div>
+          <div className="modal-footer">
+            <Button onClick={toggle} type="button" className="btn btn-success btn-sm" data-dismiss="modal">Cancel</Button>
+          </div>
+        </div>
+      </ModalBody>
     </Modal>
   );
 }
