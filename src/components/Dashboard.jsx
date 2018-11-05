@@ -24,7 +24,7 @@ class Dashboard extends React.Component {
   async componentDidMount() {
     const value = JSON.parse(store.get('rentals'));
     await this.setState({ rentals: value });
-    this.setState({ optYears: this.getYears() })
+    this.setState({ optYears: this.getYears() });
     this.getYearTotals(this.state.fiscalYear);
   }
 

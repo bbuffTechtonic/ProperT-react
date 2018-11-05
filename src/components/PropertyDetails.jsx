@@ -1,6 +1,7 @@
 import React from 'react';
 import IndivPropertyDetails from './IndivProperty/IndivPropertyDetails';
 import ExpenseDetails from './expenses/ExpenseDetails';
+import '../styles/EditProperty.css';
 
 function PropertyDetails({ currentRental, handlePropertyUpdate, handleAddExpense }) {
   return (

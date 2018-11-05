@@ -1,4 +1,4 @@
-#edit-prop-modal-header {
+#add-expense-modal-header {
   background-color: #343a40;
   color: white;
 }
@@ -8,6 +8,6 @@ span {
   display: none;
 }
 
-#submit-edit-property {
+#add-expense-save {
   margin-right: 10px;
 }

@@ -2,11 +2,6 @@ body {
 
 }
 
-/* adding this margin so footer doesn't overlap container MC*/
-.prop-details-container {
-  margin-bottom: 150px;
-}
-
 #indiv-property-details {
   margin: 40px 0px 60px 0px;
 }
@@ -23,8 +18,4 @@ body {
 
 .indiv-prop-spec {
   margin-bottom: 3px;
-}
-
-#edit-prop-button {
-  margin-right: 10px;
 }

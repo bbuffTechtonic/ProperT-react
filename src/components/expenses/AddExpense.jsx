@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody } from 'reactstrap';
+import '../../styles/AddExpense.css';
 
 function AddExpense({ isOpen, toggle, rental, handleAddExpense }) {
   return (
@@ -53,13 +54,11 @@ function AddExpense({ isOpen, toggle, rental, handleAddExpense }) {
                       </div>
                     </div>
                     <Button onClick={toggle} className="btn btn-success btn-sm" id="add-expense-save" type="submit">Save</Button>
+                    <Button onClick={toggle} type="button" className="btn btn-success btn-sm" data-dismiss="modal">Cancel</Button>
                   </form>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="modal-footer">
-            <Button onClick={toggle} type="button" className="btn btn-success btn-sm" data-dismiss="modal">Cancel</Button>
           </div>
         </div>
       </ModalBody>

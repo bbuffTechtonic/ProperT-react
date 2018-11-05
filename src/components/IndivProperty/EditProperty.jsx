@@ -123,13 +123,11 @@ function EditProperty({ isOpen, toggle, rental, handlePropertyUpdate }) {
                       </div>
                     </div>
                     <Button onClick={toggle} className="btn btn-success btn-sm" id="submit-edit-property" type="submit">Save Changes</Button>
+                    <Button onClick={toggle} type="button" className="btn btn-success btn-sm" data-dismiss="modal">Cancel</Button>
                   </form>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="modal-footer">
-            <Button onClick={toggle} type="button" className="btn btn-success btn-sm" data-dismiss="modal">Cancel</Button>
           </div>
         </div>
       </ModalBody>
