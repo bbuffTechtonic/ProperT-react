@@ -516,6 +516,10 @@ class App extends Component {
     this.setState({ currentRental: selectedRental });
   }
 
+  handleLogout = () => {
+    this.setState({isLoggedIn:false});
+  }
+
   render() {
     const { isLoggedIn, currentRental, landlord1 } = this.state;
     return (
@@ -526,6 +530,7 @@ class App extends Component {
             hydrateStateWithStore={this.hydrateStateWithStore}
             updateCurrentRental={this.updateCurrentRental}
             isLoggedIn={isLoggedIn}
+            handleLogout={this.handleLogout}
           />
           <main>
             <Route

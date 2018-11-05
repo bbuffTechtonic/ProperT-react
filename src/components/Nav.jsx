@@ -62,7 +62,7 @@ class NavBar extends React.Component {
 
   render() {
     const { modal, rentals } = this.state;
-    const { currentRental, updateCurrentRental, isLoggedIn } = this.props;
+    const { currentRental, updateCurrentRental, isLoggedIn, handleLogout} = this.props;
     return (
       <div>
         <nav className="navbar navbar-expand-md navbar-dark bg-dark" id="nav-bar">
@@ -109,7 +109,7 @@ class NavBar extends React.Component {
               </ul>
               )
             }
-            {isLoggedIn && <button type="button" id="logout-button" className="btn btn-outline-success btn-sm">Logout</button>}
+            {isLoggedIn && <Link to="/" className="btn btn-sm btn-outline-success" onClick={handleLogout}>Logout</Link>}
           </div>
         </nav>
       </div>
