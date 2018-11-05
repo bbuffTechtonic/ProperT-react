@@ -56,14 +56,13 @@ class ExpenseDetails extends Component {
 
   render() {
     const { modal, currentExpenses } = this.state;
-    const { rental } = this.props;
     return (
       <section id="expense-details">
         <TableButtons toggle={this.handleToggle} isOpen={modal} />
         <AddExpense toggle={this.handleToggle} isOpen={modal} />
         <div className="row">
           <TableNav selectExpense={this.handleSelectedExpense} />
-          <DisplayTable currentExpenses={currentExpenses} createTable={this.createTable} />
+          <DisplayTable currentExpenses={currentExpenses} />
         </div>
       </section>
     );
