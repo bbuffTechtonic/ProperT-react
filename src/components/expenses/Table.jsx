@@ -13,11 +13,11 @@ function DisplayTable({ currentExpenses, rental }) {
             <thead className="bg-dark text-light">
               <tr>
                 <th scope="col"><input type="checkbox" id="check-all" className="check" /></th>
-                <th scope="col">Date</th>
-                <th scope="col">Description</th>
-                <th scope="col">Image</th>
-                <th scope="col">Category</th>
-                <th scope="col">Amount</th>
+                <th style={{width:'100px'}} scope="col">Date</th>
+                <th style={{width:'300px'}}scope="col">Description</th>
+                <th style={{width:'100px'}}scope="col">Image</th>
+                <th style={{width:'200px'}}scope="col">Category</th>
+                <th style={{width:'100px'}}scope="col">Amount</th>
               </tr>
             </thead>
             <tbody>
