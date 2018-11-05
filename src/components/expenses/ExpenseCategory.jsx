@@ -1,5 +1,4 @@
 import React from 'react';
-import { Tr, Th, Td } from 'react-super-responsive-table';
 
 function ExpenseCategory({ category }) {
   // add key with id when database available

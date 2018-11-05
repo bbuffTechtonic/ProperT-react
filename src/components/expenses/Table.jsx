@@ -1,6 +1,5 @@
 import React from 'react';
-// import { Table, Thead, Tbody, Tr, Th } from 'react-super-responsive-table';
-import 'reactstrap';
+import { Table } from 'reactstrap';
 import AllExpenses from './AllExpenses';
 import ExpenseCategory from './ExpenseCategory';
 
@@ -9,7 +8,7 @@ function DisplayTable({ currentExpenses, rental }) {
     <div className="col">
       <div className="card">
         <div className="card-body" id="exp-detail-card">
-          <table striped id="expenses-table">
+          <table className="table-striped" id="expenses-table">
             <thead className="bg-dark text-light">
               <tr>
                 <th scope="col"><input type="checkbox" id="check-all" className="check" /></th>

@@ -15,24 +15,13 @@ class ExpenseDetails extends Component {
     };
   }
 
-  componentDidMount = () => {
-    const {modal, currentExpenses} = this.state;
-    const {rental} = this.props;
+  componentDidMount() {
+    const { currentExpenses } = this.state;
     let tempArr = [];
     for (let category in currentExpenses) {
     currentExpenses[category].map(expense => tempArr.push(expense));
     }
     this.setState({ currentExpenses: tempArr });
-    return (
-      <section id="expense-details">
-        <TableButtons toggle={this.handleToggle} isOpen={modal} />
-        <AddExpense toggle={this.handleToggle} isOpen={modal} />
-        <div className="row">
-          <TableNav selectExpense={this.handleSelectedExpense} />
-          <DisplayTable currentExpenses={currentExpenses} rental={rental} />
-        </div>
-      </section>
-    );
   }
 
   handleToggle = () => {
@@ -84,7 +73,6 @@ class ExpenseDetails extends Component {
   render() {
     const { modal, currentExpenses } = this.state;
     const { rental } = this.props;
-    const { expenses } = rental;
     const { handleAddExpense } = this.props;
     return (
       <section id="expense-details">
