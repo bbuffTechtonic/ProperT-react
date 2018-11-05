@@ -111,15 +111,15 @@ function EditProperty({ isOpen, toggle, rental, handlePropertyUpdate }) {
                     <div className="form-row">
                       <div className="form-group col-md-4">
                         <label htmlFor="lease-start">Lease Start Date:</label>
-                        <input type="text" name="lease-start" className="form-control" id="edit-lease-start" defaultValue={editTenant.leaseStart} />
+                        <input type="date" name="lease-start" className="form-control" id="edit-lease-start" defaultValue={editTenant.leaseStart} />
                       </div>
                       <div className="form-group col-md-4">
                         <label htmlFor="lease-end">Lease End Date:</label>
-                        <input type="text" name="lease-end" className="form-control" id="edit-lease-end" defaultValue={editTenant.leaseEnd} />
+                        <input type="date" name="lease-end" className="form-control" id="edit-lease-end" defaultValue={editTenant.leaseEnd} />
                       </div>
                       <div className="form-group col-md-4">
                         <label htmlFor="rental-amount">Monthly Rental Amount ($)</label>
-                        <input type="text" name="rental-amount" className="form-control" id="edit-rental-amount" defaultValue={editTenant.monthlyRent} />
+                        <input type="number" name="rental-amount" className="form-control" id="edit-rental-amount" defaultValue={editTenant.monthlyRent} />
                       </div>
                     </div>
                     <Button onClick={toggle} className="btn btn-success btn-sm" id="submit-edit-property" type="submit">Save Changes</Button>
