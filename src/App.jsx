@@ -396,11 +396,13 @@ class App extends Component {
   }
 
 
-  handleAddExpense(e) {
+  handleAddExpense = (e) => {
     e.preventDefault();
+    console.log('handleAddExpense is firing');
 
     const allRentals = JSON.parse(store.get('rentals'));
     const temp = {...this.state.currentRental};
+    console.log(temp);
     let newExpenseToAdd = {};
     const expenseType = e.target[2].value;
 
@@ -410,6 +412,7 @@ class App extends Component {
           date: e.target[0].value,
           amount: e.target[3].value,
           description: e.target[1].value,
+          category: e.target[2].value,
         }
         temp.expenses.mileage.push(newExpenseToAdd);
         console.log(temp.expenses.mileage);
@@ -419,6 +422,7 @@ class App extends Component {
           date: e.target[0].value,
           amount: e.target[3].value,
           description: e.target[1].value,
+          category: e.target[2].value,
         }
         temp.expenses.mortgage.push(newExpenseToAdd);
         console.log(temp.expenses.mortgage);
@@ -428,6 +432,7 @@ class App extends Component {
           date: e.target[0].value,
           amount: e.target[3].value,
           description: e.target[1].value,
+          category: e.target[2].value,
         }
         temp.expenses.maintenance.push(newExpenseToAdd);
         console.log(temp.expenses.maintenance);
@@ -437,6 +442,7 @@ class App extends Component {
           date: e.target[0].value,
           amount: e.target[3].value,
           description: e.target[1].value,
+          category: e.target[2].value,
         }
         temp.expenses.suppliesGoods.push(newExpenseToAdd);
         console.log(temp.expenses.suppliesGoods);
@@ -446,6 +452,7 @@ class App extends Component {
           date: e.target[0].value,
           amount: e.target[3].value,
           description: e.target[1].value,
+          category: e.target[2].value,
         }
         temp.expenses.hoa.push(newExpenseToAdd);
         console.log(temp.expenses.hoa);
@@ -455,6 +462,7 @@ class App extends Component {
           date: e.target[0].value,
           amount: e.target[3].value,
           description: e.target[1].value,
+          category: e.target[2].value,
         }
         temp.expenses.rent.push(newExpenseToAdd);
         console.log(temp.expenses.rent);
@@ -464,6 +472,7 @@ class App extends Component {
           date: e.target[0].value,
           amount: e.target[3].value,
           description: e.target[1].value,
+          category: e.target[2].value,
         }
         temp.expenses.misc.push(newExpenseToAdd);
         console.log(temp.expenses.misc);
@@ -530,7 +539,7 @@ class App extends Component {
                 <AccountManagement {...props}
                   landlord1={landlord1}
                   handleAccountChanges={this.handleAccountChanges}
-                />} 
+                />}
             />
             <Route
               path="/property-details"
@@ -538,6 +547,7 @@ class App extends Component {
                 <PropertyDetails {...props}
                   currentRental={currentRental}
                   handlePropertyUpdate={this.handlePropertyUpdate}
+                  handleAddExpense={this.handleAddExpense}
                 />}
             />
           </main>

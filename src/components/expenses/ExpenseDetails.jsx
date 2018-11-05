@@ -77,14 +77,10 @@ class ExpenseDetails extends Component {
       }
     this.setState({ currentExpenses: expenses });
   }
-<<<<<<< HEAD
-=======
 
   // handleClick(e) {
 
   // }
->>>>>>> fix merge conflict leftover text
-
   render() {
     const { modal, currentExpenses } = this.state;
     const { rental } = this.props;
