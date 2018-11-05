@@ -138,8 +138,10 @@ class Dashboard extends React.Component {
 
   }
 
-  handleClick(e) {
-    this.setState({ fiscalYear: e.target.value });
+  async handleClick(e) {
+    await this.setState({ fiscalYear: e.target.value });
+    this.getYearTotals(parseInt(this.state.fiscalYear, 10));
+
   }
 
   render() {
