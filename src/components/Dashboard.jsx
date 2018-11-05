@@ -91,7 +91,7 @@ class Dashboard extends React.Component {
       for (let j = 0;j < this.state.rentals[i].expenses.hoa.length;j++) {
         oYear = new Date(this.state.rentals[i].expenses.hoa[j].date)
         if (oYear.getFullYear() === year) {
-          totExpenses = totExpenses + this.state.rentals[i].expenses.hoa[j].amount;
+          totExpenses = totExpenses + parseInt(this.state.rentals[i].expenses.hoa[j].amount, 10);
         }
       }
     }
@@ -100,7 +100,7 @@ class Dashboard extends React.Component {
       for (let j = 0;j < this.state.rentals[i].expenses.maintenance.length;j++) {
         oYear = new Date(this.state.rentals[i].expenses.maintenance[j].date)
         if (oYear.getFullYear() === year) {
-          totExpenses = totExpenses + this.state.rentals[i].expenses.maintenance[j].amount;
+          totExpenses = totExpenses + parseInt(this.state.rentals[i].expenses.maintenance[j].amount, 10);
         }
       }
     }
@@ -109,7 +109,7 @@ class Dashboard extends React.Component {
       for (let j = 0;j < this.state.rentals[i].expenses.misc.length;j++) {
         oYear = new Date(this.state.rentals[i].expenses.misc[j].date)
         if (oYear.getFullYear() === year) {
-          totExpenses = totExpenses + this.state.rentals[i].expenses.misc[j].amount;
+          totExpenses = totExpenses + parseInt(this.state.rentals[i].expenses.misc[j].amount, 10);
         }
       }
     }
@@ -118,7 +118,7 @@ class Dashboard extends React.Component {
       for (let j = 0;j < this.state.rentals[i].expenses.suppliesGoods.length;j++) {
         oYear = new Date(this.state.rentals[i].expenses.suppliesGoods[j].date)
         if (oYear.getFullYear() === year) {
-          totExpenses = totExpenses + this.state.rentals[i].expenses.suppliesGoods[j].amount;
+          totExpenses = totExpenses + parseInt(this.state.rentals[i].expenses.suppliesGoods[j].amount, 10);
         }
       }
     }
@@ -127,7 +127,7 @@ class Dashboard extends React.Component {
       for (let j = 0;j < this.state.rentals[i].expenses.rent.length;j++) {
         oYear = new Date(this.state.rentals[i].expenses.rent[j].date)
         if (oYear.getFullYear() === year) {
-          totIncome = totIncome + this.state.rentals[i].expenses.rent[j].amount;
+          totIncome = totIncome + parseInt(this.state.rentals[i].expenses.rent[j].amount, 10);
         }
       }
     }
