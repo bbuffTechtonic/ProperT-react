@@ -11,6 +11,7 @@ class ExpenseDetails extends Component {
     this.state = {
       modal: false,
       currentExpenses: rental.expenses,
+      navSelect: 'All',
     };
   }
 
@@ -76,6 +77,13 @@ class ExpenseDetails extends Component {
       }
     this.setState({ currentExpenses: expenses });
   }
+<<<<<<< HEAD
+=======
+
+  // handleClick(e) {
+
+  // }
+>>>>>>> fix merge conflict leftover text
 
   render() {
     const { modal, currentExpenses } = this.state;
