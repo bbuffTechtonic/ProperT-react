@@ -71,7 +71,7 @@ class Dashboard extends React.Component {
     let uniqueArray = [];
     let uniqueOptArray = [];
     for(let i = 0;i < distinctYears.length; i++){
-      if(uniqueArray.indexOf(distinctYears[i]) == -1){
+      if(uniqueArray.indexOf(distinctYears[i]) === -1){
           uniqueArray.push(distinctYears[i]);
           uniqueOptArray.push(<option value= {distinctYears[i]} >{distinctYears[i]}</option>);
       }

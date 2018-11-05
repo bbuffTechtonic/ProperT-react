@@ -25,7 +25,7 @@ class NavBar extends React.Component {
     });
   }
 
-  handleSubmit(e){
+  handleSubmit(e) {
     e.preventDefault();
     const address = {
       address1: e.target[0].value,
@@ -43,18 +43,19 @@ class NavBar extends React.Component {
       leaseStart: e.target[8].value,
       leaseEnd: e.target[9].value,
     };
-    const expenses =
-    {
+
+    const expenses = {
       mileage: [],
       mortgage: [],
       maintenance: [],
       suppliesGoods: [],
-      misc:[],
-      hoa:[],
-      rent:[]
+      misc: [],
+      hoa: [],
+      rent: [],
     };
-    const newProperty = {address,tenantInfo,expenses};
-    let rentals = [...this.state.rentals];
+
+    const newProperty = { address, tenantInfo, expenses };
+    const rentals = [...this.state.rentals];
     rentals.push(newProperty);
     store.set('rentals', JSON.stringify(rentals));
     const value = JSON.parse(store.get('rentals'));
@@ -63,7 +64,7 @@ class NavBar extends React.Component {
 
   render() {
     const { modal, rentals } = this.state;
-    const { currentRental, getAddress } = this.props;
+    const { currentRental, updateCurrentRental } = this.props;
     return (
       <div>
         <nav className="navbar navbar-expand-md navbar-dark bg-dark" id="nav-bar">
@@ -83,21 +84,26 @@ class NavBar extends React.Component {
               <li className="nav-item">
                 <Link to="/account" className="nav-link">My Account</Link>
               </li>
-              {rentals.length>0?
-                <li className="nav-item">
-                <Dropdown
-                  // getDropAddress={this.handleChange}
-                  className="nav-item"
-                  title="Select Rental"
-                  list={rentals}
-                  getAddress={getAddress}
-                />
-                </li>
-                :<li className="nav-item"><Dropdown className="nav-item"
-                  title={"No Properties"}
-                  list={[]}
-                />
-                </li>
+              {
+                rentals.length > 0
+                  ? <li className="nav-item">
+                      <Dropdown
+                        className="nav-item"
+                        title="Select Rental"
+                        list={rentals}
+                        updateCurrentRental={updateCurrentRental}
+                        currentRental={currentRental}
+                      />
+                    </li>
+                  : <li className="nav-item">
+                      <Dropdown 
+                        className="nav-item"
+                        title={"No Properties"}
+                        list={[]}
+                        updateCurrentRental={updateCurrentRental}
+                        currentRental={currentRental}
+                      />
+                    </li>
               }
             </ul>
             <button type="button" id="logout-button" className="btn btn-outline-success btn-sm">Logout</button>

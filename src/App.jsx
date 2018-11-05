@@ -21,12 +21,15 @@ class App extends Component {
         firstname: 'Patrick', lastName: 'Smith', email: 'patrick@yoohoo.org', password: 'password', avatar: './images/userOne.jpeg',
       },
     };
+<<<<<<< HEAD
 
     this.handleSuccessfulLogin = this.handleSuccessfulLogin.bind(this);
     this.handlePropertyUpdate = this.handlePropertyUpdate.bind(this);
     this.handleAccountChanges = this.handleAccountChanges.bind(this);
     this.hydrateStateWithStore = this.hydrateStateWithStore.bind(this);
     this.handleAddExpense = this.handleAddExpense.bind(this);
+=======
+>>>>>>> Implement Nav dropdown selection to update currently displayed rental
   }
 
   componentDidMount() {
@@ -49,7 +52,7 @@ class App extends Component {
     this.saveStateToStore();
   }
 
-  hydrateStateWithStore() {
+  hydrateStateWithStore = () => {
 //   const Prop1 = {
 //       address:
 //       {
@@ -340,18 +343,18 @@ class App extends Component {
     this.setState({ rentals: value });
   }
 
-  saveStateToStore() {
+  saveStateToStore = () => {
     // for every item in React state
     store.set('rentals', JSON.stringify(this.state.rentals));
   }
 
-  handleSuccessfulLogin() {
+  handleSuccessfulLogin = () => {
     this.setState({
       isLoggedIn: true,
     });
   }
 
-  handlePropertyUpdate(e) {
+  handlePropertyUpdate = (e) => {
     e.preventDefault();
 
     const allRentals = JSON.parse(store.get('rentals'));
@@ -501,19 +504,16 @@ class App extends Component {
     this.hydrateStateWithStore();
   }
 
-
-  handleAccountChanges(newLandlordObj) {
+  handleAccountChanges = (newLandlordObj) => {
     this.setState({
       landlord1: newLandlordObj,
     });
   }
 
-  handleCurrentRental = (address) => {
-
-    // const currentAddress = address;
-    console.log(address)
-    //get actual object
-    //this.setState({ currentRental: sss });
+  updateCurrentRental = (address) => {
+    const allRentals = JSON.parse(store.get('rentals'));
+    const selectedRental = allRentals.find(rental => rental.address.address1 === address);
+    this.setState({ currentRental: selectedRental });
   }
 
   render() {
@@ -521,11 +521,34 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Nav currentRental={currentRental} hydrateStateWithStore={this.hydrateStateWithStore} />
+          <Nav
+            currentRental={currentRental}
+            hydrateStateWithStore={this.hydrateStateWithStore}
+            updateCurrentRental={this.updateCurrentRental}
+          />
           <main>
-            <Route exact path="/" render={props => <Landing {...props} isLoggedIn={isLoggedIn} landlord1={landlord1} handleSuccessfulLogin={this.handleSuccessfulLogin} />} />
-            <Route path="/account" render={props => <AccountManagement {...props} landlord1={landlord1} handleAccountChanges={this.handleAccountChanges} />} />
-            <Route path="/property-details" render={props => <PropertyDetails {...props} currentRental={currentRental} handlePropertyUpdate={this.handlePropertyUpdate} handleAddExpense={this.handleAddExpense} />} />
+            <Route
+              exact path="/"
+              render={props => <Landing {...props}
+              isLoggedIn={isLoggedIn} landlord1={landlord1}
+              handleSuccessfulLogin={this.handleSuccessfulLogin} />}
+            />
+            <Route
+              path="/account"
+              render={props =>
+                <AccountManagement {...props}
+                  landlord1={landlord1}
+                  handleAccountChanges={this.handleAccountChanges}
+                />} 
+            />
+            <Route
+              path="/property-details"
+              render={props =>
+                <PropertyDetails {...props}
+                  currentRental={currentRental}
+                  handlePropertyUpdate={this.handlePropertyUpdate}
+                />}
+            />
           </main>
           <Footer />
         </div>
