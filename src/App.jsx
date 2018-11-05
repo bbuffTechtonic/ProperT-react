@@ -21,15 +21,6 @@ class App extends Component {
         firstname: 'Patrick', lastName: 'Smith', email: 'patrick@yoohoo.org', password: 'password', avatar: './images/userOne.jpeg',
       },
     };
-<<<<<<< HEAD
-
-    this.handleSuccessfulLogin = this.handleSuccessfulLogin.bind(this);
-    this.handlePropertyUpdate = this.handlePropertyUpdate.bind(this);
-    this.handleAccountChanges = this.handleAccountChanges.bind(this);
-    this.hydrateStateWithStore = this.hydrateStateWithStore.bind(this);
-    this.handleAddExpense = this.handleAddExpense.bind(this);
-=======
->>>>>>> Implement Nav dropdown selection to update currently displayed rental
   }
 
   componentDidMount() {
