@@ -15,7 +15,7 @@ class App extends Component {
     const myRental = JSON.parse(store.get('rentals'))[0];
     this.state = {
       rentals: [],
-      isLoggedIn: false,
+      isLoggedIn: true,
       currentRental: myRental,
       landlord1: {
         firstname: 'Patrick', lastName: 'Smith', email: 'patrick@yoohoo.org', password: 'password', avatar: './images/userOne.jpeg',
@@ -411,6 +411,14 @@ class App extends Component {
     this.setState({
       landlord1: newLandlordObj,
     });
+  }
+
+  handleCurrentRental = (address) => {
+
+    // const currentAddress = address;
+    console.log(address)
+    //get actual object
+    //this.setState({ currentRental: sss });
   }
 
   render() {

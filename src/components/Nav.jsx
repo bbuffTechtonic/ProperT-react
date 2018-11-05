@@ -63,7 +63,7 @@ class NavBar extends React.Component {
 
   render() {
     const { modal, rentals } = this.state;
-    const { currentRental } = this.props;
+    const { currentRental, getAddress } = this.props;
     return (
       <div>
         <nav className="navbar navbar-expand-md navbar-dark bg-dark" id="nav-bar">
@@ -85,9 +85,12 @@ class NavBar extends React.Component {
               </li>
               {rentals.length>0?
                 <li className="nav-item">
-                <Dropdown className="nav-item"
+                <Dropdown
+                  // getDropAddress={this.handleChange}
+                  className="nav-item"
                   title="Select Rental"
                   list={rentals}
+                  getAddress={getAddress}
                 />
                 </li>
                 :<li className="nav-item"><Dropdown className="nav-item"

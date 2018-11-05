@@ -23,6 +23,7 @@ class Dropdown extends Component{
       headerTitle: address1,
       listOpen: false
     })
+    this.props.getAddress(address1);
   }
 
   toggleList = () => {
@@ -32,7 +33,7 @@ class Dropdown extends Component{
   }
 
   render(){
-    const {list} = this.props
+    const { list, getAddress } = this.props
     const {listOpen, headerTitle} = this.state
     return(
       <Link to="/property-details" className="nav-link">
