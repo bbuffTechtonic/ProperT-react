@@ -1,6 +1,10 @@
 footer {
-  height: 90px;
+  height: 70px;
   background-color: #343a40;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
 }
 
 /* footer.main-footer {
@@ -16,5 +20,5 @@ footer {
 }
 
 .footer-links {
-  padding-top: 15px;
+  padding-top: 5px;
 }

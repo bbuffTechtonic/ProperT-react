@@ -68,7 +68,7 @@ class NavBar extends React.Component {
     return (
       <div>
         <nav className="navbar navbar-expand-md navbar-dark bg-dark" id="nav-bar">
-          <img id="nav-logo" className="navbar-brand" width="120px" src={LogoPic} alt="company logo" />
+          <img id="nav-logo" className="navbar-brand" width="70px" src={LogoPic} alt="company logo" />
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -99,7 +99,7 @@ class NavBar extends React.Component {
                         />
                       </li>
                     : <li className="nav-item">
-                        <Dropdown 
+                        <Dropdown
                           className="nav-item"
                           title={"No Properties"}
                           list={[]}
