@@ -96,8 +96,12 @@ function AddProperty({ modal, toggle, onSubmit }) {
                     </div>
                     <div className="form-row">
                       <div className="form-group col-md-4">
-                        <label htmlFor="tenant-name">Tenant Name</label>
-                        <input type="text" name="tenant-name" className="form-control" id="tenant-name" placeholder="John Doe" />
+                        <label htmlFor="tenant-first-name">Tenant First Name</label>
+                        <input type="text" name="tenant-first-name" className="form-control" id="tenant-first-name" placeholder="John" />
+                      </div>
+                      <div className="form-group col-md-4">
+                        <label htmlFor="tenant-last-name">Tenant Last Name</label>
+                        <input type="text" name="tenant-last-name" className="form-control" id="tenant-last-name" placeholder="Doe" />
                       </div>
                       <div className="form-group col-md-4">
                         <label htmlFor="tenant-email">Tenant Email</label>

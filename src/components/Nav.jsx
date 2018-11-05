@@ -36,12 +36,12 @@ class NavBar extends React.Component {
     };
 
     const tenantInfo = {
-      firstName: e.target[5].value,
-      lastName: e.target[6].value,
-      email: e.target[7].value,
-      monthlyRent: e.target[10].value,
-      leaseStart: e.target[8].value,
-      leaseEnd: e.target[9].value,
+      firstName: e.target[6].value,
+      lastName: e.target[7].value,
+      email: e.target[8].value,
+      monthlyRent: e.target[9].value,
+      leaseStart: e.target[10].value,
+      leaseEnd: e.target[11].value,
     };
 
     const expenses = {
