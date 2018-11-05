@@ -12,11 +12,10 @@ const store = require('store');
 class App extends Component {
   constructor() {
     super();
-    const myRental = JSON.parse(store.get('rentals'))[0];
     this.state = {
       rentals: [],
       isLoggedIn: true,
-      currentRental: myRental,
+      currentRental: null,
       landlord1: {
         firstname: 'Patrick', lastName: 'Smith', email: 'patrick@yoohoo.org', password: 'password', avatar: './images/userOne.jpeg',
       },

@@ -11,7 +11,7 @@ class ExpenseDetails extends Component {
     this.state = {
       modal: false,
       currentExpenses: rental.expenses,
-      navSelect: 'All',
+      checkAll: false,
     };
   }
 
@@ -67,16 +67,20 @@ class ExpenseDetails extends Component {
     this.setState({ currentExpenses: expenses });
   }
 
-  // handleClick(e) {
+  handleCheckAll = (e) => {
+    this.setState({ checkAll: true });
+  }
 
-  // }
   render() {
     const { modal, currentExpenses } = this.state;
     const { rental } = this.props;
     const { handleAddExpense } = this.props;
     return (
       <section id="expense-details">
-        <TableButtons toggle={this.handleToggle} isOpen={modal} />
+        <TableButtons
+          toggle={this.handleToggle}
+          isOpen={modal}
+        />
         <AddExpense
           toggle={this.handleToggle}
           isOpen={modal}
@@ -85,7 +89,11 @@ class ExpenseDetails extends Component {
         />
         <div className="row">
           <TableNav selectExpense={this.handleSelectedExpense} />
-          <DisplayTable currentExpenses={currentExpenses} rental={rental} />
+          <DisplayTable
+            currentExpenses={currentExpenses}
+            rental={rental}
+            checkAll={this.handleCheckAll}
+          />
         </div>
       </section>
     );
