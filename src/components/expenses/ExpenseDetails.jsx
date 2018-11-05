@@ -4,8 +4,6 @@ import TableNav from './TableNav';
 import DisplayTable from './Table';
 import AddExpense from './AddExpense';
 
-const store = require('store');
-
 class ExpenseDetails extends Component {
   constructor(props) {
     super(props);
@@ -56,13 +54,14 @@ class ExpenseDetails extends Component {
 
   render() {
     const { modal, currentExpenses } = this.state;
+    const { rental } = this.props;
     return (
       <section id="expense-details">
         <TableButtons toggle={this.handleToggle} isOpen={modal} />
         <AddExpense toggle={this.handleToggle} isOpen={modal} />
         <div className="row">
           <TableNav selectExpense={this.handleSelectedExpense} />
-          <DisplayTable currentExpenses={currentExpenses} />
+          <DisplayTable currentExpenses={currentExpenses} rental={rental} />
         </div>
       </section>
     );

@@ -13,6 +13,7 @@ function TableNav({ selectExpense }) {
             <a onClick={selectExpense} className="nav-link text-success" data-toggle="pill" href="#v-pills-supplies/goods" role="tab" aria-controls="v-pills-supplies/goods" aria-selected="false">Supplies/Goods</a>
             <a onClick={selectExpense} className="nav-link text-success" data-toggle="pill" href="#v-pills-misc" role="tab" aria-controls="v-pills-misc" aria-selected="false">Misc</a>
             <a onClick={selectExpense} className="nav-link text-success" data-toggle="pill" href="#v-pills-rent" role="tab" aria-controls="v-pills-rent" aria-selected="false">Rent</a>
+            <a onClick={selectExpense} className="nav-link text-success" data-toggle="pill" href="#v-pills-hoa" role="tab" aria-controls="v-pills-rent" aria-selected="false">HOA</a>
           </nav>
         </div>
       </div>

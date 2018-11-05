@@ -1,13 +1,10 @@
 import React from 'react';
-import ReactTable from 'react-table';
-import 'react-table/react-table.css';
-import { Table, Thead, Tbody, Tr, Th } from 'react-super-responsive-table';
-// import 'reactstrap';
+// import { Table, Thead, Tbody, Tr, Th } from 'react-super-responsive-table';
+import 'reactstrap';
 import AllExpenses from './AllExpenses';
 import ExpenseCategory from './ExpenseCategory';
 
-function DisplayTable({ currentExpenses }) {
-
+function DisplayTable({ currentExpenses, rental }) {
   return (
     <div className="col">
       <div className="card">
@@ -25,11 +22,10 @@ function DisplayTable({ currentExpenses }) {
             </thead>
             <tbody>
               {
-                typeof currentExpenses === 'object'
+                currentExpenses === rental.expenses
                   ? <AllExpenses expenses={currentExpenses} />
                   : <ExpenseCategory category={currentExpenses} />
               }
-              {/* <ReactTable data={currentExpenses} columns={} /> */}
             </tbody>
           </table>
         </div>
