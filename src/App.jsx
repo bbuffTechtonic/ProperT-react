@@ -15,7 +15,7 @@ class App extends Component {
     super();
     this.state = {
       rentals: [],
-      isLoggedIn: true,
+      isLoggedIn: false,
       currentRental: null,
       landlord1: {
         firstname: 'Patrick', lastName: 'Smith', email: 'patrick@yoohoo.org', password: 'password', Avatar,
@@ -331,12 +331,17 @@ class App extends Component {
 //     rentals.push(Prop2);
 //     store.set('rentals', JSON.stringify(rentals));
     const value = JSON.parse(store.get('rentals'));
-    this.setState({ rentals: value });
+    const isLoggedIn = store.get('isLoggedIn')
+    this.setState({
+      rentals: value,
+      isLoggedIn: isLoggedIn,
+     });
   }
 
   saveStateToStore = () => {
     // for every item in React state
     store.set('rentals', JSON.stringify(this.state.rentals));
+    store.set('isLoggedIn', this.state.isLoggedIn)
   }
 
   handleSuccessfulLogin = () => {
