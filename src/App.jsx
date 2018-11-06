@@ -15,17 +15,8 @@ class App extends Component {
     const myRental = JSON.parse(store.get('rentals'))[0];
     this.state = {
       rentals: [],
-<<<<<<< HEAD
       isLoggedIn: false,
       currentRental: myRental,
-=======
-      isLoggedIn: true,
-<<<<<<< HEAD
-      currentRental: null,
->>>>>>> Set current rental to initially render on app to null
-=======
-      currentRental: myRental,
->>>>>>> Hardcode starting rental
       landlord1: {
         firstname: 'Patrick', lastName: 'Smith', email: 'patrick@yoohoo.org', password: 'password', avatar: './images/userOne.jpeg',
       },
