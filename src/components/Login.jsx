@@ -22,6 +22,7 @@ class Login extends React.Component {
     this.handleLogin = this.handleLogin.bind(this);
     this.toggleLandingCard = this.toggleLandingCard.bind(this);
     this.handleSignUp = this.handleSignUp.bind(this);
+    this.handleForgotPassword = this.handleForgotPassword.bind(this);
   }
 
   handleInputChange(e) {
@@ -82,6 +83,16 @@ class Login extends React.Component {
     Password: ${signUpPassword}`;
     alert(message);
     handleSuccessfulLogin();
+  }
+
+  handleForgotPassword(e) {
+    const { landlord1 } = this.props;
+    if (e.target.forgotPassEmail.value !== landlord1.email) {
+      e.preventDefault();
+      alert('Email not registered');
+      return;
+    }
+    alert(`A link to reset your password has been sent to ${e.target.forgotPassEmail.value}`);
   }
 
   toggleLandingCard(card) {
@@ -352,7 +363,7 @@ class Login extends React.Component {
                   <h6 className="reset-instructions">
                     Enter your email address and we will send you a link to reset your password
                   </h6>
-                  <form id="forgotPassForm">
+                  <form id="forgotPassForm" onSubmit={this.handleForgotPassword}>
                     <div className="form group email">
                       <div className="input-group email">
                         <div className="input-group-prepend">
@@ -367,6 +378,7 @@ class Login extends React.Component {
                           type="email"
                           className="form-control"
                           id="forgotPassEmail"
+                          name="forgotPassEmail"
                           placeholder="Email"
                           aria-describedby="inputGroupPrepend2"
                           required
