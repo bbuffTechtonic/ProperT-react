@@ -5,6 +5,7 @@ import AccountManagement from './components/AccountManagement';
 import PropertyDetails from './components/PropertyDetails';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
+import Avatar from './images/userOne.jpeg';
 import './App.css';
 
 const store = require('store');
