@@ -5,7 +5,6 @@ import AccountManagement from './components/AccountManagement';
 import PropertyDetails from './components/PropertyDetails';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
-import Avatar from './images/userOne.jpeg';
 import './App.css';
 
 const store = require('store');
@@ -13,12 +12,13 @@ const store = require('store');
 class App extends Component {
   constructor() {
     super();
+    const myRental = JSON.parse(store.get('rentals'))[0];
     this.state = {
       rentals: [],
       isLoggedIn: false,
-      currentRental: null,
+      currentRental: myRental,
       landlord1: {
-        firstname: 'Patrick', lastName: 'Smith', email: 'patrick@yoohoo.org', password: 'password', Avatar,
+        firstname: 'Patrick', lastName: 'Smith', email: 'patrick@yoohoo.org', password: 'password', avatar: './images/userOne.jpeg',
       },
     };
   }
@@ -521,10 +521,6 @@ class App extends Component {
     this.setState({ currentRental: selectedRental });
   }
 
-  handleLogout = () => {
-    this.setState({isLoggedIn:false});
-  }
-
   render() {
     const { isLoggedIn, currentRental, landlord1 } = this.state;
     return (
@@ -535,7 +531,6 @@ class App extends Component {
             hydrateStateWithStore={this.hydrateStateWithStore}
             updateCurrentRental={this.updateCurrentRental}
             isLoggedIn={isLoggedIn}
-            handleLogout={this.handleLogout}
           />
           <main>
             <Route

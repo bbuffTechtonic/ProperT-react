@@ -33,7 +33,7 @@ class Dropdown extends Component{
   }
 
   render(){
-    const { list, updateCurrentRental, currentRental } = this.props
+    const { list } = this.props
     const { listOpen, headerTitle } = this.state
     return(
       <a href="#" className="nav-link">
@@ -51,7 +51,7 @@ class Dropdown extends Component{
           </ul>
         }
         </div>
-        </a>
+      </a>
     )
   }
 }

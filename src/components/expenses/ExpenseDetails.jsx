@@ -68,11 +68,12 @@ class ExpenseDetails extends Component {
   }
 
   handleCheckAll = (e) => {
-    this.setState({ checkAll: true });
+    const { checkAll } = this.state;
+    this.setState({ checkAll: !checkAll });
   }
 
   render() {
-    const { modal, currentExpenses } = this.state;
+    const { modal, currentExpenses, checkAll } = this.state;
     const { rental } = this.props;
     const { handleAddExpense } = this.props;
     return (
@@ -92,7 +93,8 @@ class ExpenseDetails extends Component {
           <DisplayTable
             currentExpenses={currentExpenses}
             rental={rental}
-            checkAll={this.handleCheckAll}
+            handleCheckAll={this.handleCheckAll}
+            checkAll={checkAll}
           />
         </div>
       </section>
