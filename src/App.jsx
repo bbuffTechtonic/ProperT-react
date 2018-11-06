@@ -19,7 +19,7 @@ class App extends Component {
       isLoggedIn: false,
       currentRental: myRental,
       landlord1: {
-        firstname: 'Patrick', lastName: 'Smith', email: 'patrick@yoohoo.org', password: 'password', avatar: './images/userOne.jpeg',
+        firstname: 'Patrick', lastName: 'Smith', email: 'patrick@yoohoo.org', password: 'password', Avatar,
       },
     };
   }
